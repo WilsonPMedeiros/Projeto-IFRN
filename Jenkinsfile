@@ -1,5 +1,6 @@
 #!groovy
 
+
 def configFile = ''
 def buildImage = 'persapiens/firefox-openjdk:68-11u4-alpine'
 
