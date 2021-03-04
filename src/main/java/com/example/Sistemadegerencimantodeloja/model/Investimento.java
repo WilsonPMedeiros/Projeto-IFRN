@@ -15,8 +15,14 @@ public class Investimento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
+
+    @Column(name = "descricao", nullable = false)
     private String descricao;
+
+    @Column(name = "data", nullable = false)
     private Date data;
+
+    @Column(name = "valor", nullable = false)
     private double valor;
 }

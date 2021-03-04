@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SistemaDeGerencimantoDeLojaApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SistemaDeGerencimantoDeLojaApplication.class, args);
 	}
 

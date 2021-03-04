@@ -1,36 +1,35 @@
 package com.example.Sistemadegerencimantodeloja.Service.Serviceimpl;
 
-
-
-import com.example.Sistemadegerencimantodeloja.Service.ClienteService;
+import com.example.Sistemadegerencimantodeloja.Service.EstoqueService;
 import com.example.Sistemadegerencimantodeloja.model.Cliente;
+import com.example.Sistemadegerencimantodeloja.model.Estoque;
 import com.example.Sistemadegerencimantodeloja.repository.ClienteRepository;
+import com.example.Sistemadegerencimantodeloja.repository.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-class ClienteServiceImpl implements ClienteService {
+public class EstoqueServiceImpl implements EstoqueService {
+
 
     @Autowired
-    ClienteRepository repository;
+    EstoqueRepository repository;
 
     @Override
-    public List<Cliente> findAll() {
+    public List<Estoque> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Cliente findById(Long id) {
+    public Estoque findById(Long id) {
         return null;
     }
 
 
     @Override
-    public Cliente save(Cliente cliente) {
+    public Estoque save(Estoque estoque) {
         return null;
     }
-
 }
-

@@ -14,15 +14,30 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
+
+    @Column(name = "nome", nullable = false)
     private String nome;
+
+    @Column(name = "cpf", nullable = false)
     private String cpf;
+
+    @Column(name = "telefone", nullable = false)
     private String telefone;
+
+    @Column(name = "login", nullable = false)
     private String login;
+
+    @Column(name = "sexo", nullable = false)
     private String sexo;
-    private Funcao f;
+
+    @Column(name = "senha", nullable = false)
     private String senha;
+
+    /* Ver como referenciar na tabela */
+    private Funcao f;
     private Endereco endereco;
+
 
 
 }

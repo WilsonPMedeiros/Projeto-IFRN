@@ -14,10 +14,20 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
+
+    @Column(name = "logradouro", nullable = false)
     private String logradouro;
+
+    @Column(name = "num", nullable = false)
     private int num;
+
+    @Column(name = "cidade", nullable = false)
     private String cidade;
+
+    @Column(name = "uf", nullable = false)
     private String uf;
+
+    @Column(name = "bairro", nullable = false)
     private String bairro;
 }

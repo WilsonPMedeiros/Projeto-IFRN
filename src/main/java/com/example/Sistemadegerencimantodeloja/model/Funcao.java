@@ -14,7 +14,11 @@ public class Funcao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
+
+    @Column(name = "salario", nullable = false)
     private double salario;
+
+    @Column(name = "nome", nullable = false)
     private String nome;
 }
