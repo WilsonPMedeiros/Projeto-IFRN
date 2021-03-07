@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_produtos")
-@Embeddable
 @Data
 @Builder
 public class Produtos {
@@ -28,4 +27,8 @@ public class Produtos {
 
     @Column(name = "grupo", nullable = false)
     private String grupo;
+
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "p")
+    private Vendas venda;
 }

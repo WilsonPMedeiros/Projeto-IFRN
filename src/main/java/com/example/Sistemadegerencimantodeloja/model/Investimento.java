@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Entity
 @Table(name="tb_investimentos")
-@Embeddable
 @Data
 @Builder
 public class Investimento {

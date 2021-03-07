@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Entity
 @Table(name="tb_vendas")
-@Embeddable
 @Data
 @Builder
 public class Vendas {
@@ -33,9 +32,16 @@ public class Vendas {
     @Column(name = "forma_pagamento", nullable = false)
     private String forma_pagamento;
 
-    /* Ver como colocar essa coluna na tabela*/
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_produto")
     private Produtos p;
+
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
 
 }

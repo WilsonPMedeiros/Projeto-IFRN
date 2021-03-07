@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_funcionario")
-@Embeddable
 @Data
 @Builder
 public class Funcionario {
@@ -34,10 +33,16 @@ public class Funcionario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    /* Ver como referenciar na tabela */
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_funcao")
     private Funcao f;
+
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_end")
     private Endereco endereco;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "funcionario")
+    private Vendas vendas;
 
 
 }

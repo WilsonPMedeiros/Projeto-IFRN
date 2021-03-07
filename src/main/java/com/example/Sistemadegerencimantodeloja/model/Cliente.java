@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_cliente")
-@Embeddable
 @Data
 @Builder
 public class Cliente {
@@ -32,8 +31,12 @@ public class Cliente {
     @Column(name = "sexo", nullable = false)
     private String sexo;
 
-    @Column(name = "end", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_end")
     private Endereco end;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "cliente")
+    private Vendas venda;
 
 
 

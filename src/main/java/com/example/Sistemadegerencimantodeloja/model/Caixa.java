@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name="tb_caixa")
-@Embeddable
 @Data
 @Builder
 public class Caixa {

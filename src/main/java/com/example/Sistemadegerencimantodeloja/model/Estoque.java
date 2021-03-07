@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_estoque")
-@Embeddable
 @Data
 @Builder
 public class Estoque {

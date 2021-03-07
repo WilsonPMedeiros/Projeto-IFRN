@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tb_funcao")
-@Embeddable
 @Data
 @Builder
 public class Funcao {
@@ -21,4 +20,7 @@ public class Funcao {
 
     @Column(name = "nome", nullable = false)
     private String nome;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "f")
+    private Funcionario funcionario;
 }
