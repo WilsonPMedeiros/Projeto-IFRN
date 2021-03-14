@@ -21,6 +21,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.3.RELEASE'
 
 
 }
