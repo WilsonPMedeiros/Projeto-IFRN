@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -50,57 +50,58 @@
         </div>
         </nav>
         <div class="content"><label><strong>Cadastro de Cliente&nbsp;</strong><br></label>
-            <form>
+            <form action="#" method="post" >
                 <div class="form-row">
                     <div class="col-sm-12">
-                        <div class="form-group"><label>Nome</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Nome</label><input class="form-control"  type="text" name="nome"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-4">
-                        <div class="form-group"><label>CPF</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>CPF</label><input class="form-control" type="text" name="cpf"></div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Sexo</label><input class="form-control" type="text"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>ID</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Sexo</label><input class="form-control" type="text" name="sexo"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-3 col-lg-9">
-                        <div class="form-group"><label>Email</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Email</label><input class="form-control" type="text"  name="email"></div>
                     </div>
                     <div class="col-sm-3 offset-lg-0">
-                        <div class="form-group"><label>Telefone</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Telefone</label><input  class="form-control" type="text" name="telefone"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-10">
-                        <div class="form-group"><label>Logradouro</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Logradouro</label><input class="form-control"  type="text" name="logradouro"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>Número</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Número</label><input class="form-control"   type="text" name="numero"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-4">
-                        <div class="form-group"><label>Cidade</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Cidade</label><input class="form-control"  type="text" name="cidade"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Bairro</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Bairro</label><input class="form-control"  type="text" name="bairro"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Cep</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Cep</label><input class="form-control"  type="text" name="cep"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>UF</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>UF</label><input class="form-control"  type="text" name="uf"></div>
                     </div>
                 </div>
+                <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;">
+                    <button class="btn btn-danger" type="submit">Cancelar</button>
+                    <button class="btn btn-danger" type="submit">Salvar</button>
+                </div>
+                                                                                                                                                                                                                                                    type="button">Salvar</form></div>
             </form>
         </div>
-        <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button><button class="btn btn-danger" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;"
-                type="button">Salvar</button></div>
+
     </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>

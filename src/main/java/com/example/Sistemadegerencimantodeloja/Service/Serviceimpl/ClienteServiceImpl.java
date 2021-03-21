@@ -8,10 +8,11 @@ import com.example.Sistemadegerencimantodeloja.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-class ClienteServiceImpl implements ClienteService {
+public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     ClienteRepository repository;
@@ -27,10 +28,12 @@ class ClienteServiceImpl implements ClienteService {
     }
 
 
-    @Override
+    @Transactional
     public Cliente save(Cliente cliente) {
-        return null;
+        return repository.save(cliente);
     }
+
+
 
 }
 

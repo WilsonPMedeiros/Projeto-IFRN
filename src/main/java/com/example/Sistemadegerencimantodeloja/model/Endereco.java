@@ -1,7 +1,9 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Table(name="tb_endereco")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
