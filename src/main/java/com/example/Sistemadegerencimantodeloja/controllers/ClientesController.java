@@ -1,6 +1,4 @@
 package com.example.Sistemadegerencimantodeloja.controllers;
-
-import com.example.Sistemadegerencimantodeloja.Service.EnderecoService;
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.ClienteServiceImpl;
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.EnderecoServiceImpl;
 import com.example.Sistemadegerencimantodeloja.model.Cliente;
@@ -24,7 +22,6 @@ public class ClientesController {
 
 /*    @RequestMapping(value = "/opcoes", method = RequestMethod.GET)
     public String opcoesClientes(){
-
         return "opcoesCliente.html";
     }*/
 
