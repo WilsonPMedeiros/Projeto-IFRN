@@ -9,5 +9,5 @@ class SistemaDeGerencimantoDeLojaApplicationTests {
 	/*@Test
 	void contextLoads() {
 	}*/
-
+//sda
 }
