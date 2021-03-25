@@ -8,6 +8,7 @@ import com.example.Sistemadegerencimantodeloja.repository.EstoqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -28,8 +29,13 @@ public class EstoqueServiceImpl implements EstoqueService {
     }
 
 
-    @Override
+    @Transactional
     public Estoque save(Estoque estoque) {
-        return null;
+        return repository.save(estoque);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+       repository.deleteById(id);
     }
 }

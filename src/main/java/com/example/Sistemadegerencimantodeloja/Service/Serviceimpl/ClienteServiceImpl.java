@@ -33,6 +33,10 @@ public class ClienteServiceImpl implements ClienteService {
         return repository.save(cliente);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
 
 
 }

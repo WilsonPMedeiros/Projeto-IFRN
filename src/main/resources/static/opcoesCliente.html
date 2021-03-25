@@ -16,7 +16,6 @@
 
     <link rel="stylesheet" href="assets/css/Dashboard-layout-v11-1.css"
                >
-
     <link rel="stylesheet" href="assets/css/Dashboard-layout-v11-2.css">
     <link rel="stylesheet" href="assets/css/Dashboard-layout-v11.css">
     <link rel="stylesheet" href="assets/css/dh-card-image-left-dark.css">
@@ -58,32 +57,33 @@
         </div>
         </nav>
             <div class="col-md-12 search-table-col"><a class="navbar-brand" href="/cadastrar">Adicionar +</a>
-            <div
-                class="table-responsive table-bordered table  table-bordered results">
-                <table class="table table-bordered table-hover">
-                    <thead class="bill-header cs">
-                        <tr>
-                            <th id="trs-hd" class="col-lg-1">ID</th>
-                            <th id="trs-hd" class="col-lg-2">CPF</th>
-                            <th id="trs-hd" class="col-lg-3">Email</th>
-                            <th id="trs-hd" class="col-lg-2">Nome</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="warning no-result">
-                            <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
-                        </tr>
-                        <tr th:each="cliente : ${clientes}">
-                            <td th:text="${cliente.id}"></td>
-                            <td th:text="${cliente.cpf}"></td>
-                            <td th:text="${cliente.email}"></td>
-                            <td th:text="${cliente.nome}"></td>
-                            <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
 
-        </div>
+                        <table class="table table-bordered table-hover">
+                            <thead class="bill-header cs">
+                                <tr>
+                                    <th id="trs-hd" class="col-lg-1">ID</th>
+                                    <th id="trs-hd" class="col-lg-2">CPF</th>
+                                    <th id="trs-hd" class="col-lg-3">Email</th>
+                                    <th id="trs-hd" class="col-lg-2">Nome</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="warning no-result">
+                                    <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
+                                </tr>
+                                <tr th:each="cliente : ${clientes}">
+                                    <td th:text="${cliente.id}" ><input th:text="${cliente.id}" name="id" class="invisible"></td>
+                                    <td th:text="${cliente.cpf}"></td>
+                                    <td th:text="${cliente.email}"></td>
+                                    <td th:text="${cliente.nome}"></td>
+                                   <!-- <td th:text="${cliente.end}" class="invisible"></td>-->
+                                    <td>
+                                        <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar/cliente'}">Editar</a></button>
+                                        <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/opcoes/excluir/'+cliente.id+'/'+cliente.end}">Excluir</a></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
 
     </div>

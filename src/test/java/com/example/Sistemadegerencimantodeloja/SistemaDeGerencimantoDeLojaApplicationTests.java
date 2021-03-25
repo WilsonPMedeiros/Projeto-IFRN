@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SistemaDeGerencimantoDeLojaApplicationTests {
 
-	/*@Test
+	@Test
 	void contextLoads() {
-	}*/
-//sda
+	}
+
 }

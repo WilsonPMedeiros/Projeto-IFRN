@@ -1,5 +1,6 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,8 +35,10 @@ public class Endereco {
     @Column(name = "bairro", nullable = false)
     private String bairro;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "end")
-    private  Cliente cliente;
+    @Column(name = "cep", nullable = false)
+    private  String cep;
+    /*@OneToOne(fetch = FetchType.LAZY, mappedBy = "end")
+    private  Cliente cliente;*/
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "endereco")
     private  Funcionario funcionario;

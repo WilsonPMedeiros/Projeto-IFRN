@@ -9,4 +9,5 @@ public interface EnderecoService {
     List<Endereco> findAll();
     Endereco findById(Long id);
     Endereco save(Endereco end);
+    void deleteById(Long id);
 }

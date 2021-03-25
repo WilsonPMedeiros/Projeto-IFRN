@@ -8,6 +8,7 @@ import com.example.Sistemadegerencimantodeloja.repository.ProdutosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -28,8 +29,13 @@ public class ProdutosServiceImpl implements ProdutosService {
     }
 
 
-    @Override
+    @Transactional
     public Produtos save(Produtos produtos) {
-        return null;
+        return repository.save(produtos);}
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
+
 }

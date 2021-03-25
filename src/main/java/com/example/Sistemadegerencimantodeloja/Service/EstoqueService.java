@@ -10,4 +10,5 @@ public interface EstoqueService {
     List<Estoque> findAll();
     Estoque findById(Long id);
     Estoque save(Estoque estoque);
+    void deleteById(Long id);
 }

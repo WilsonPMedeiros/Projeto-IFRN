@@ -18,10 +18,33 @@ public class DummyData {
 
     @Autowired
     ClienteRepository repository;
+
+    @Autowired
     CaixaRepository repositoryCaixa;
+
+    @Autowired
     InvestimentoRepository repositoryIn;
+
+    @Autowired
     ProdutosRepository repositoryProduto;
 
+    @Autowired
+    EnderecoRepositoy repositoy_end;
+
+    @Autowired
+    EstoqueRepository repositoryEstoque;
+
+    @Autowired
+    VendasRepository repositoryvend;
+
+    @Autowired
+    FuncaoRepository repositoryFuncao;
+
+    @Autowired
+    DespesasRepository repositorydesp;
+
+    @Autowired
+    FuncionarioRepository repositoryFuncionario;
 
     //@PostConstruct
     public void salvarCliente(){
@@ -56,9 +79,6 @@ public class DummyData {
         }
     }
 
-
-    @Autowired
-    EnderecoRepositoy repositoy_end;
 
     //@PostConstruct
     public void salvarEndereco(){
@@ -201,15 +221,15 @@ public class DummyData {
 
         Produtos p = Produtos.builder()
                 .descricao("Blusa estampada")
-                .valor_custo(10)
-                .valor_venda(20)
+                .valorCusto(10)
+                .valorVenda(20)
                 .grupo("Blusa")
                 .build();
 
         Produtos pp = Produtos.builder()
                 .descricao("Blusa lisa")
-                .valor_custo(20)
-                .valor_venda(40)
+                .valorCusto(20)
+                .valorVenda(40)
                 .grupo("Blusa")
                 .build();
 
@@ -225,9 +245,6 @@ public class DummyData {
             repositoryProduto.save(prods.get(a));
         }
     }
-
-    @Autowired
-    EstoqueRepository repositoryEstoque;
 
    // @PostConstruct
     public void salvarEstoque(){
@@ -255,9 +272,6 @@ public class DummyData {
         }
     }
 
-    @Autowired
-    FuncaoRepository repositoryFuncao;
-
     //@PostConstruct
     public void salvarFuncao(){
 
@@ -283,9 +297,6 @@ public class DummyData {
             repositoryFuncao.save(funs.get(a));
         }
     }
-
-    @Autowired
-    FuncionarioRepository repositoryFuncionario;
 
     //@PostConstruct
     public void salvarFuncionario(){
@@ -322,11 +333,6 @@ public class DummyData {
         }
     }
 
-
-
-    @Autowired
-    DespesasRepository repositorydesp;
-
     //@PostConstruct
     public void salvarDespesas(){
 
@@ -356,9 +362,6 @@ public class DummyData {
             repositorydesp.save(desps.get(a));
         }
     }
-
-    @Autowired
-    VendasRepository repositoryvend;
 
     //@PostConstruct
     public void salvarVendas(){

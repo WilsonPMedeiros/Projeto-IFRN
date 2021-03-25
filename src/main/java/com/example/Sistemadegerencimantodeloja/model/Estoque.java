@@ -1,7 +1,9 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Table(name="tb_estoque")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,4 +21,8 @@ public class Estoque {
 
     @Column(name = "quantidade", nullable = false)
     private int quantidade;
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_produto")
+    private Produtos produto;
 }

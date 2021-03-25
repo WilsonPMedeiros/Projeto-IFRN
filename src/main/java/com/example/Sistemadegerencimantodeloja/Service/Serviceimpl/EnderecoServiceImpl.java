@@ -32,5 +32,10 @@ public class EnderecoServiceImpl implements EnderecoService {
         return null;
     }
 
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
 
 }

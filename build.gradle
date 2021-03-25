@@ -23,6 +23,17 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+	testCompile 'org.assertj:assertj-core:3.19.0'
+
+	annotationProcessor 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile "com.querydsl:querydsl-core:4.2.2"
+	compile 'com.querydsl:querydsl-jpa:4.2.2'
+	annotationProcessor 'com.querydsl:querydsl-apt:4.2.2:jpa'
+
+
+
+
+
 
 }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -49,7 +49,7 @@
                 </div>
         </div>
         </nav>
-        <div class="col-md-12 search-table-col"><span class="counter pull-right"></span><a class="navbar-brand" href="#" style="color: rgb(132,142,140);"><br></a><a class="navbar-brand" href="#"><br></a><span style="background-color: #6891a2;color: rgb(255,255,255);"><strong>Adicionar +</strong></span>
+        <div class="col-md-12 search-table-col"><a class="navbar-brand" href="/cadastrarProduto">Adicionar +</a>
             <div
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
@@ -64,11 +64,14 @@
                         <tr class="warning no-result">
                             <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
                         </tr>
-                        <tr>
-                            <td>Blusa Listrada</td>
-                            <td>0000000000</td>
-                            <td>10</td>
-                            <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
+                        <tr th:each="produto : ${produtos}">
+                            <td th:text="${produto.id}" >
+                            <td th:text="${produto.descricao}"></td>
+                            <td th:text="${produto.valorVenda}"></td>
+                            <td th:text="${produto.valorCusto}"></td>
+                            <td>
+                            <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar/cliente'}">Editar</a></button>
+                            <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a>Excluir</a></button></td>
                         </tr>
                     </tbody>
                 </table>
