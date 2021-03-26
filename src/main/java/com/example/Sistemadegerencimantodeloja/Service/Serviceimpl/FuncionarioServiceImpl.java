@@ -9,6 +9,7 @@ import com.example.Sistemadegerencimantodeloja.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -29,8 +30,13 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
 
-    @Override
+    @Transactional
     public Funcionario save(Funcionario funcionario) {
-        return null;
+        return repository.save(funcionario);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }

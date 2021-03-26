@@ -1,14 +1,19 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.sql.rowset.CachedRowSet;
 
 @Entity
 @Table(name="tb_funcionario")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

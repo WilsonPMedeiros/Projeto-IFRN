@@ -11,4 +11,5 @@ public interface FuncionarioService {
     List<Funcionario> findAll();
     Funcionario findById(Long id);
    Funcionario save(Funcionario funcionario);
+   void deleteById(Long id);
 }

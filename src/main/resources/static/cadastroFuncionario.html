@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -50,64 +50,64 @@
         </div>
         </nav>
         <div class="content"><label class="text-left text-dark"><strong>Cadastro de funcionário&nbsp;</strong></label>
-            <form>
+            <form method="post">
                 <div class="form-row">
                     <div class="col-sm-12">
-                        <div class="form-group"><label>Nome</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Nome</label><input name="nome" class="form-control" type="text"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-6">
-                        <div class="form-group"><label>Email</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Email</label><input name="login" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="form-group"><label>Senha</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Senha</label><input name="senha" class="form-control" type="text"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-4">
-                        <div class="form-group"><label>CPF</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>CPF</label><input name="cpf" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Sexo</label><input class="form-control" type="text"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>ID</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Sexo</label><input name="sexo" class="form-control" type="text"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-3 col-lg-9">
-                        <div class="form-group"><label>Função</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Função</label><input name="funcao" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-3 offset-lg-0">
-                        <div class="form-group"><label>Telefone</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Telefone</label><input name="telefone" class="form-control" type="text"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-10">
-                        <div class="form-group"><label>Logradouro</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Logradouro</label><input name="logradouro" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>Número</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Número</label><input name="numero" class="form-control" type="text"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-4">
-                        <div class="form-group"><label>Cidade</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Cidade</label><input name="cidade" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Bairro</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Bairro</label><input name="bairro" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Cep</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Cep</label><input name="cep" class="form-control" type="text"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>UF</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>UF</label><input name="uf" class="form-control" type="text"></div>
                     </div>
                 </div>
+                <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;">
+                    <button class="btn btn-danger" type="submit">Cancelar</button>
+                    <button class="btn btn-danger" type="submit">Salvar</button>
+                </div>
             </form>
-            <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button><button class="btn btn-danger" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;"
-                    type="button">Salvar</button></div>
+
         </div>
     </div>
     </div>
