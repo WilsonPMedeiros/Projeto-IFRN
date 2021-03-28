@@ -38,6 +38,12 @@ public class ClienteServiceImpl implements ClienteService {
         repository.deleteById(id);
     }
 
+    public Cliente findByCpf(String cpf){
+        return repository.findByCpf(cpf);
+
+
+    }
+
 
 }
 

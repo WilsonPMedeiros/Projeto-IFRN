@@ -11,5 +11,6 @@ public interface ClienteService {
     Cliente findById(Long id);
     Cliente save(Cliente cliente);
     void deleteById(Long id);
+    Cliente findByCpf(String cpf);
 }
 

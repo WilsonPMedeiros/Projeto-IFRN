@@ -33,6 +33,7 @@ public class ClienteServiceImplIT {
 
     private List<Cliente> clientes;
     private Long idCliente1;
+    private String cpfcliente;
 
 
     @BeforeEach
@@ -46,6 +47,7 @@ public class ClienteServiceImplIT {
         this.clientes.add(cliente1);
 
         this.idCliente1 = this.clientes.get(0).getId();
+        this.cpfcliente = this.clientes.get(0).getCpf();
     }
 
     @Test
@@ -53,7 +55,7 @@ public class ClienteServiceImplIT {
         assertThat(this.clienteService).isNotNull();
     }
 
-    @Test
+    /*@Test
     public void testFindById(){
                 when(this.clienteService.findById(this.idCliente1))
                         .thenReturn(this.clientes.get(0));
@@ -61,7 +63,19 @@ public class ClienteServiceImplIT {
         Cliente clienteretomado = clienteService.findById(this.idCliente1);
 
         assertThat(clienteretomado.getId()).isEqualTo(this.idCliente1);
+    }*/
+
+    @Test
+    public void testFindByCpf(){
+        when(this.clienteService.findByCpf(this.cpfcliente))
+                .thenReturn(this.clientes.get(0));
+
+
+        Cliente clienteretomado = clienteService.findByCpf(this.cpfcliente);
+        assertThat(clienteretomado.getCpf()).isEqualTo(this.cpfcliente);
+
     }
+
 
 
 

@@ -1,7 +1,9 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +12,8 @@ import java.util.Date;
 @Table(name="tb_vendas")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Vendas {
 
     @Id
@@ -38,7 +42,7 @@ public class Vendas {
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_produto")
-    private Produtos p;
+    private Produtos produtos;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_funcionario")

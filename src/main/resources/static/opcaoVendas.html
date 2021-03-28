@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -49,8 +49,7 @@
                 </div>
         </div>
         </nav>
-        <div class="col-md-12 search-table-col" style="filter: blur(0px);"><span class="counter pull-right"></span><a class="navbar-brand" href="#" style="color: rgb(132,142,140);"><br></a><a class="navbar-brand" href="#"><br></a><span style="background-color: #6891a2;color: rgb(255,255,255);"><strong>Adicionar +</strong></span>
-            <div
+        <div class="col-md-12 search-table-col" style="filter: blur(0px);"><a class="navbar-brand" href="/cadastrarVendas">Adicionar +</a><div
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
@@ -72,7 +71,10 @@
                             <td>12/03/2021</td>
                             <td>Mariana</td>
                             <td>R$50,00</td>
-                            <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
+                            <td>
+                                <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar/cliente'}">Editar</a></button>
+                                <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a>Excluir</a></button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
