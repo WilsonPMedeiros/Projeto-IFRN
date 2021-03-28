@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="tb_vendas")
@@ -21,19 +22,19 @@ public class Vendas {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "desconto", nullable = false)
+    @Column(name = "desconto")
     private double desconto;
 
-    @Column(name = "preco_venda", nullable = false)
+    @Column(name = "preco_venda")
     private double preco_venda;
 
-    @Column(name = "preco_total", nullable = false)
+    @Column(name = "preco_total")
     private double preco_total;
 
-    @Column(name = "data_Venda", nullable = false)
+    @Column(name = "data_Venda")
     private Date data_Venda;
 
-    @Column(name = "forma_pagamento", nullable = false)
+    @Column(name = "forma_pagamento")
     private String forma_pagamento;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
@@ -47,5 +48,14 @@ public class Vendas {
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
+
+    private List<Produtos> prod;
+
+    private int quant;
+
+    public void addProduto(Produtos p) {
+            this.prod.add(p);
+            this.quant = +1;
+    }
 
 }
