@@ -45,8 +45,6 @@ public class ClienteServiceImplIT {
         );
 
         this.clientes.add(cliente1);
-
-        this.idCliente1 = this.clientes.get(0).getId();
         this.cpfcliente = this.clientes.get(0).getCpf();
     }
 
@@ -69,8 +67,6 @@ public class ClienteServiceImplIT {
     public void testFindByCpf(){
         when(this.clienteService.findByCpf(this.cpfcliente))
                 .thenReturn(this.clientes.get(0));
-
-
         Cliente clienteretomado = clienteService.findByCpf(this.cpfcliente);
         assertThat(clienteretomado.getCpf()).isEqualTo(this.cpfcliente);
 

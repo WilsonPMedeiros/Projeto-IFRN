@@ -29,7 +29,10 @@ dependencies {
 	compile "com.querydsl:querydsl-core:4.2.2"
 	compile 'com.querydsl:querydsl-jpa:4.2.2'
 	annotationProcessor 'com.querydsl:querydsl-apt:4.2.2:jpa'
-
+	annotationProcessor 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile 'com.querydsl:querydsl-core:4.2.2'
+	compile 'com.querydsl:querydsl-jpa:4.2.2'
+	annotationProcessor 'com.querydsl:querydsl-apt:4.2.2:jpa'
 
 
 

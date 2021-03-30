@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="tb_estoque")
@@ -25,4 +26,8 @@ public class Estoque {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_produto")
     private Produtos produto;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+            @JoinColumn(name = "id_produto")
+    List<Produtos> menorValor;
 }

@@ -78,8 +78,10 @@
                                     <td th:text="${cliente.nome}"></td>
                                    <!-- <td th:text="${cliente.end}" class="invisible"></td>-->
                                     <td>
-                                        <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar/cliente'}">Editar</a></button>
-                                        <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/opcoes/excluir/'+cliente.id+'/'+cliente.end}">Excluir</a></button>
+                                        <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i>
+                                            <a      href="EditarCliente.html"
+                                                    th:href="${'/editar/cliente/' + cliente.id+'/'+cliente.end}">Editar</a></button>
+                                        <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/opcoes/excluir/'+cliente.id}">Excluir</a></button>
                                     </td>
                                 </tr>
                             </tbody>

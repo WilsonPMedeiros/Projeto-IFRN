@@ -7,8 +7,10 @@ import com.example.Sistemadegerencimantodeloja.model.Cliente;
 import com.example.Sistemadegerencimantodeloja.model.Endereco;
 import com.example.Sistemadegerencimantodeloja.model.Estoque;
 import com.example.Sistemadegerencimantodeloja.model.Produtos;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,5 +55,17 @@ public class ProdutosController {
         System.out.println("Esse é o esstoque "+produto);
         return "redirect:/opcaoestoque";
     }
+
+    @RequestMapping(value = "/opcaoestoque{valorVenda}", method = RequestMethod.POST)
+    public ModelAndView menorValor(@RequestParam("valorVendaInput") double valorVenda) {
+        ModelAndView mv = new ModelAndView("/opcaoEstoqueFiltro.html");
+        List<Produtos> produto= (List<Produtos>) estoqueService.buscarProdutosComMenorValor(valorVenda);
+        System.out.println("Resultado da query " +produto);
+        mv.addObject("produtos", produto);
+        return mv;
+    }
+/*
+    @PostMapping(value ="/opecaoEstoqueMenorValor", method= RequestMethod.GET)
+    public ModelAndView(Produtos)*/
 
 }

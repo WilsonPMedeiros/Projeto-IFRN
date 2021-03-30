@@ -5,6 +5,7 @@ import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.FuncionarioSe
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.VendasServiceImpl;
 import com.example.Sistemadegerencimantodeloja.model.Cliente;
 import com.example.Sistemadegerencimantodeloja.model.Funcionario;
+import com.example.Sistemadegerencimantodeloja.model.Produtos;
 import com.example.Sistemadegerencimantodeloja.model.Vendas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
@@ -47,10 +48,14 @@ public class VendasController {
         return mv;
     }
     @PostMapping(value = "/adicionar")
-    public String adicionarCompra(){
+    public ModelAndView adicionarCompra(Produtos p){
+        ModelAndView mv = new ModelAndView("/vendas.html");
+        //vendasService.add(p);
+        List<Vendas> v= vendasService.findAll();
 
+        mv.addObject("vendas", v);
 
-       return "em desenvlvimento";
+       return mv;
     }
 
 }

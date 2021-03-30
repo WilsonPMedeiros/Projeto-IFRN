@@ -80,7 +80,7 @@ public class DummyData {
     }
 
 
-    //@PostConstruct
+    @PostConstruct
     public void salvarEndereco(){
 
         List<Endereco> enderecos = new LinkedList<>();
@@ -92,6 +92,7 @@ public class DummyData {
                 .bairro("Alto das Flores")
                 .cidade("Nova Cruz")
                 .uf("RN")
+                .cep("59215000")
                 .build();
 
         // Endereco 2
@@ -101,6 +102,7 @@ public class DummyData {
                 .bairro("Frei Damião")
                 .cidade("Nova Cruz")
                 .uf("RN")
+                .cep("59215000")
                 .build();
 
         enderecos.add(endereco1);

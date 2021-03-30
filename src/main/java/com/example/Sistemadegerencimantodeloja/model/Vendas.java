@@ -7,15 +7,24 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @Table(name="tb_vendas")
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class Vendas {
+
+
+    public Vendas(Funcionario f, Cliente c){
+
+        this.funcionario = f;
+        this.cliente = c;
+        this.produtos = new LinkedList<Produtos>();
+
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,21 +50,19 @@ public class Vendas {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_produto")
-    private Produtos produtos;
+    private List<Produtos> produtos;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
 
-    private List<Produtos> prod;
 
-    private int quant;
 
     public void addProduto(Produtos p) {
-            this.prod.add(p);
-            this.quant = +1;
+            this.produtos.add(p);
+            this.preco_total=this.preco_total + p.getValorVenda();
     }
 
 }

@@ -1,4 +1,5 @@
 package com.example.Sistemadegerencimantodeloja.controllers;
+import com.example.Sistemadegerencimantodeloja.Service.ClienteService;
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.ClienteServiceImpl;
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.EnderecoServiceImpl;
 import com.example.Sistemadegerencimantodeloja.model.Cliente;
@@ -18,13 +19,6 @@ public class ClientesController {
     @Autowired
     EnderecoServiceImpl enderecoService;
 
-
-
-
-/*    @RequestMapping(value = "/opcoes", method = RequestMethod.GET)
-    public String opcoesClientes(){
-        return "opcoesCliente.html";
-    }*/
 
 
     //busca todos os clientes
@@ -50,45 +44,49 @@ public class ClientesController {
         clienteService.save(cliente);
         return "redirect:/opcoes";
     }
-    @GetMapping("/opcoes/excluir/{id}/{end_id}")
-    public String removerCliente(@PathVariable("id") long id, @PathVariable("end_id") long end_id){
+    @GetMapping("/opcoes/excluir/{id}")
+    public String removerCliente(@PathVariable("id") long id){
        clienteService.deleteById(id);
-       enderecoService.deleteById(end_id);
         return  "redirect:/opcoes";
     }
-    @GetMapping("editar/cliente")
-    public ModelAndView editar(Cliente cliente, Endereco endereco){
+
+    /*public ModelAndView editar(Cliente cliente, Endereco endereco){
         ModelAndView mv = new ModelAndView("/EditarCliente");
         mv.addObject("cliente",cliente);
-        mv.addObject("endereco",endereco);
-        return  mv;
+        mv.addObject("endereco",endereco);*/
+
+
+
+
+
+    @RequestMapping(value = "/opcaoestoque{valorVenda}", method = RequestMethod.GET)
+    public ModelAndView editar(@RequestParam("id_cliente")  long id){
+        ModelAndView mv = new ModelAndView("/EditarCliente.html");
+        Cliente cliente =  clienteService.findById(id);
+        Endereco endereco = enderecoService.findById(cliente.getEnd().getId());
+        mv.addObject("cliente", cliente);
+        mv.addObject("endereco", endereco);
+        return mv;
     }
 
-    @PostMapping("editar/cliente/{id}/{end_id}")
+
+    @PostMapping("/editarCliente/{id}/{end_id}")
     public String atualizarCliente(@PathVariable("id") long id,
                                    @PathVariable("end_id") long end_id,
                                    @ModelAttribute("cliente") Cliente cliente,
                                    @ModelAttribute("endereco") Endereco endereco){
-        Cliente clienteEditado= clienteService.findById(id);
-        Endereco enderecoEditado= enderecoService.findById(end_id);
-        if(!enderecoEditado.equals(endereco)){
-            enderecoEditado.setBairro(endereco.getBairro());
-            enderecoEditado.setCidade(endereco.getCidade());
-            enderecoEditado.setNum(endereco.getNum());
-            enderecoEditado.setLogradouro(endereco.getLogradouro());
-            enderecoEditado.setUf(endereco.getUf());
-        }
-        if(!clienteEditado.equals(cliente)){
+        Cliente clienteEditado = clienteService.findById(id);
+        if (!clienteEditado.equals(cliente)) {
             clienteEditado.setNome(cliente.getNome());
-            clienteEditado.setCpf(cliente.getCpf());
-            clienteEditado.setEmail(cliente.getEmail());
             clienteEditado.setTelefone(cliente.getTelefone());
+            clienteEditado.setEmail(clienteEditado.getEmail());
+            clienteEditado.setCpf(cliente.getCpf());
             clienteEditado.setEnd(endereco);
-
+            clienteService.save(clienteEditado); // Cadastra e atualiza
         }
         return "redirect:/opcoes";
-
     }
+
 
 
 }

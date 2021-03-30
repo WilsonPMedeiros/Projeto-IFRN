@@ -2,6 +2,7 @@ package com.example.Sistemadegerencimantodeloja.Service.Serviceimpl;
 
 import com.example.Sistemadegerencimantodeloja.Service.VendasService;
 import com.example.Sistemadegerencimantodeloja.model.Cliente;
+import com.example.Sistemadegerencimantodeloja.model.Produtos;
 import com.example.Sistemadegerencimantodeloja.model.Vendas;
 import com.example.Sistemadegerencimantodeloja.repository.ClienteRepository;
 import com.example.Sistemadegerencimantodeloja.repository.VendasRepository;
@@ -34,6 +35,8 @@ public class VendasServiceImpl implements VendasService {
     public Vendas save(Vendas vendas) {
         return null;
     }
+
+
 }
 
 

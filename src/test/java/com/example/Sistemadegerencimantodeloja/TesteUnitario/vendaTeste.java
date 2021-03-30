@@ -1,48 +1,79 @@
 package com.example.Sistemadegerencimantodeloja.TesteUnitario;
 
-import com.example.Sistemadegerencimantodeloja.model.Cliente;
-import com.example.Sistemadegerencimantodeloja.model.Funcionario;
-import com.example.Sistemadegerencimantodeloja.model.Produtos;
-import com.example.Sistemadegerencimantodeloja.model.Vendas;
-import com.example.Sistemadegerencimantodeloja.model.factory.VendasFactory;
-import org.aspectj.lang.annotation.Before;
-
+import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.VendasServiceImpl;
+import com.example.Sistemadegerencimantodeloja.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-
-import java.util.LinkedList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class vendaTeste {
 
-    @MockBean
-    VendasFactory vendasFactory;
+
+    @Autowired
+    VendasServiceImpl vendasService;
 
     private List<Produtos> produtos;
     private Produtos produto;
-    private Cliente cliente;
     private Funcionario funcionario;
     private Vendas vendas;
+    private Long idVenda1;
+    private Cliente cliente;
+    private double valor;
 
 
     @BeforeEach
     public void setUp(){
-        cliente.setNome("gileno");
-        produto.setDescricao("banana");
-        funcionario.setNome("Andressa");
-        this.produtos= new LinkedList<>();
-        produtos.add(produto);
-        Vendas v= this.vendasFactory.criarVendas(cliente,funcionario, (Produtos) produtos);
+       this.produto = Produtos.builder()
+                .descricao("Blusa de poá")
+                .valorVenda(10)
+                .valorCusto(5)
+                .grupo("Blusas")
+                .build();
 
+        this.cliente = Cliente.builder()
+                .nome("Milena")
+                .sexo("F")
+                .email("milena@tads")
+                .telefone("123456789")
+                .end(Endereco.builder()
+                        .logradouro("travessa 13 maio")
+                        .num(114)
+                        .uf("RN")
+                        .cidade("Nova Cruz")
+                        .cep("59215000")
+                        .bairro("Centro")
+                        .build())
+                .build();
+
+        this.funcionario = Funcionario.builder()
+                .nome("Gileno")
+                .cpf("123456")
+                .sexo("M")
+                .login("gil@tads")
+                .senha("1234")
+                .telefone("7894566")
+                .endereco(Endereco.builder()
+                        .logradouro("travessa 13 maio")
+                        .num(114)
+                        .uf("RN")
+                        .cidade("Nova Cruz")
+                        .cep("59215000")
+                        .bairro("Centro")
+                        .build())
+                .build();
+
+        this.vendas = new Vendas(this.funcionario, this.cliente);
     }
 
     @Test
-    public  void testandoACoisa (){
-
+    public  void addProdutoTest(){
+        this.vendas.addProduto(this.produto);
+        double valoratual = vendas.getPreco_total();
+        assertEquals(this.produto.getValorVenda(), valoratual, 0.1);
     }
 }

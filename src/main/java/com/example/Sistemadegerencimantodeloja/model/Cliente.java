@@ -34,7 +34,7 @@ public class Cliente {
     @Column(name = "sexo", nullable = false)
     private String sexo;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "id_end")
     private Endereco end;
 

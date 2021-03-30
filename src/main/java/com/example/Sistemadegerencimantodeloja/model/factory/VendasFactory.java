@@ -13,15 +13,24 @@ import java.util.List;
 public class VendasFactory {
 
 
-    public Vendas criarVendas(
-            Cliente cliente, Funcionario funcionario, Produtos produto) {
+    /*public Vendas criarVendas(Cliente cliente, Funcionario funcionario) {
 
         Vendas vendas= Vendas.builder()
                 .cliente(cliente)
                 .funcionario(funcionario)
-                .prod((List<Produtos>) produto)
                 .build();
-//        this.repository.save(cliente);
+        return vendas;
+    } */
+
+
+    public Vendas criarVenda(
+            Cliente cliente, Funcionario funcionario, Produtos produtos){
+
+        Vendas vendas = Vendas.builder()
+                .cliente(cliente)
+                .funcionario(funcionario)
+                .build();
         return vendas;
     }
+
 }

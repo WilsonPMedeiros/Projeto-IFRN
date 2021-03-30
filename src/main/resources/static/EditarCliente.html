@@ -51,7 +51,9 @@
         </div>
         </nav>
         <div class="content"><label><strong>Editar Cliente&nbsp;</strong><br></label>
-            <form method="post" th:action="@{/editar/cliente/{id}(id=${cliente.id})/{end_id}(end_id=${endereco.id})}">
+            <form method="post" th:action="@{/editar/cliente/{id}(id=${cliente.id})/{end_id}(end_id=${endereco.id})}"
+                  th:object="${cliente}, ${endereco}"
+            >
                 <div class="form-row">
                     <div class="col-sm-12">
                         <div class="form-group"><label>Nome</label><input th:value="${cliente.nome}" class="form-control" type="text" name="nome"></div>

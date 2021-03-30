@@ -49,30 +49,24 @@
                 </div>
         </div>
         </nav>
-        <div class="d-inline-block">
-
-            <form method="post">
-                <a class="navbar-brand" href="/cadastrarProduto">Adicionar +</a>
-                <!---<tr th:each="produto : ${produtos}">
-                    <td th:text="${produto.valorVenda}"></td>
-                </tr>--->
-                <input class="ml-2" placeholder="digite o valor" id="valorVendaInput" name="valorVendaInput">
-                <button class="btn-primary p-2" type="submit" >Filtrar</button>
-            </form>
-
-        </div>
-            <table class="table table-bordered table-hover table-bordered results">
+        <div class="col-md-12 search-table-col"><a class="navbar-brand btn-primary m-2 p-2" href="/opcaoestoque">Voltar ao estoque</a>
+            <div
+                class="table-responsive table-bordered table table-hover table-bordered results">
+                <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
                         <tr>
                             <th id="trs-hd" class="col-lg-1">Produto</th>
-                            <th id="trs-hd" class="col-lg-2">descrição</th>
-                            <th id="trs-hd" class="col-lg-3"></th>
+                            <th id="trs-hd" class="col-lg-2">Descrição</th>
+                            <th id="trs-hd" class="col-lg-3"> valor de venda</th>
+                            <th id="trs-hd" class="col-lg-3">valor De custo</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="warning no-result">
                             <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
                         </tr>
+                        <div>Produtos com valor menor que 20 no estoque</div>
+
                         <tr th:each="produto : ${produtos}">
                             <td th:text="${produto.id}" >
                             <td th:text="${produto.descricao}"></td>
