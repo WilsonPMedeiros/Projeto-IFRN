@@ -40,8 +40,8 @@ public class Endereco {
     /*@OneToOne(fetch = FetchType.LAZY, mappedBy = "end")
     private  Cliente cliente;*/
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "endereco")
-    private  Funcionario funcionario;
+   /* @OneToOne(fetch = FetchType.LAZY, mappedBy = "endereco")
+    private  Funcionario funcionario;*/
 
 
 }

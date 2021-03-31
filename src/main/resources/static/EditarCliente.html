@@ -51,12 +51,11 @@
         </div>
         </nav>
         <div class="content"><label><strong>Editar Cliente&nbsp;</strong><br></label>
-            <form method="post" th:action="@{/editar/cliente/{id}(id=${cliente.id})/{end_id}(end_id=${endereco.id})}"
-                  th:object="${cliente}, ${endereco}"
+            <form method="post" th:action="@{/editarCliente/{id}(id=${cliente.id})}" th:object="${cliente}"
             >
                 <div class="form-row">
                     <div class="col-sm-12">
-                        <div class="form-group"><label>Nome</label><input th:value="${cliente.nome}" class="form-control" type="text" name="nome"></div>
+                        <div class="form-group"><label>Nome</label><input th:value="${cliente.nome}" id="clientName" name="nome" class="form-control" type="text"></div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -77,30 +76,40 @@
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-10">
-                        <div class="form-group"><label>Logradouro</label><input th:value="${endereco.logradouro}" class="form-control" type="text" name="logradouro"></div>
+                        <div class="form-group"><label>Logradouro</label><input  th:value="${cliente.end.logradouro}" class="form-control" type="text" name="logradouro"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>Número</label><input th:value="${endereco.num}" class="form-control" type="text" name="num"></div>
+                        <div class="form-group"><label>Número</label><input  th:value="${cliente.end.num}" class="form-control" type="text" name="num"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-4">
-                        <div class="form-group"><label>Cidade</label><input th:value="${endereco.cidade} " class="form-control" type="text" name="cidade"></div>
+                        <div class="form-group"><label>Cidade</label><input  th:value="${cliente.end.cidade}" class="form-control" type="text" name="cidade"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Bairro</label><input th:value="${endereco.bairro}" class="form-control" type="text" name="bairro"></div>
+                        <div class="form-group"><label>Bairro</label><input  th:value="${cliente.end.bairro}" class="form-control" type="text" name="bairro"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Cep</label><input th:value="${endereco.cep}" class="form-control" type="text" name="cep"></div>
+                        <div class="form-group"><label>Cep</label><input  th:value="${cliente.end.cep}" class="form-control" type="text" name="cep"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>UF</label><input th:value="${endereco.uf}" class="form-control" type="text" name="uf"></div>
+                        <div class="form-group"><label>UF</label><input  th:value="${cliente.end.uf}" class="form-control" type="text" name="uf"></div>
                     </div>
                 </div>
+                <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;">
+                    <button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="submit">Cancelar</button>
+                    <button class="btn btn-danger" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;" type="submit">Salvar</button>
+                </div>
             </form>
+
+                <div class="form-row">
+
+                        <div class="form-group"><input th:value="${cliente.end.id}" class="form-control" type="text" name="quak"><a href="/{end_id}">Editar Endereco</a></div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="submit">Cancelar</button><button class="btn btn-danger" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;"
-                type="submit">Salvar</button></div>
+
     </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>

@@ -38,8 +38,8 @@ public class Cliente {
     @JoinColumn(name = "id_end")
     private Endereco end;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "cliente")
-    private Vendas venda;
+    /*@OneToOne(fetch = FetchType.LAZY, mappedBy = "cliente")
+    private Vendas venda;*/
 
 
 

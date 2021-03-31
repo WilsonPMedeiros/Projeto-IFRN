@@ -29,7 +29,7 @@ public class DummyData {
     ProdutosRepository repositoryProduto;
 
     @Autowired
-    EnderecoRepositoy repositoy_end;
+    EnderecoRepositoy repositoryEnd;
 
     @Autowired
     EstoqueRepository repositoryEstoque;
@@ -50,7 +50,6 @@ public class DummyData {
     public void salvarCliente(){
 
         List<Cliente> clientes = new LinkedList<>();
-
         // Cliente 1
         Cliente cliente = Cliente.builder()
                 .nome("Maria")
@@ -58,6 +57,14 @@ public class DummyData {
                 .sexo("F")
                 .telefone("3333-3333")
                 .email("maria_tads@ifrn.com")
+                .end(Endereco.builder()
+                        .logradouro("Carlos Alexandre")
+                        .num(10)
+                        .bairro("Frei Damião")
+                        .cidade("Nova Cruz")
+                        .uf("RN")
+                        .cep("59215000")
+                        .build())
                 .build();
 
         // Cliente 1
@@ -67,20 +74,28 @@ public class DummyData {
                 .sexo("M")
                 .telefone("3333-3333")
                 .email("joao_tads@ifrn.com")
+                .end(Endereco.builder()
+                        .logradouro("Carlos Alexandre")
+                        .num(10)
+                        .bairro("Frei Damião")
+                        .cidade("Nova Cruz")
+                        .uf("RN")
+                        .cep("59215000")
+                        .build())
                 .build();
 
         clientes.add(cliente);
         clientes.add(cliente2);
 
-
-        int tam = clientes.size()-1;
-        for (int i=0;i<= tam;i++){
-            repository.save(clientes.get(i));
+        for(Cliente client: clientes) {
+            Cliente clienteSalvo = repository.save(client);
+            System.out.println("[SAIDA] ID: " + clienteSalvo.getId().toString());
         }
+
     }
 
 
-    @PostConstruct
+    //@PostConstruct
     public void salvarEndereco(){
 
         List<Endereco> enderecos = new LinkedList<>();
@@ -97,8 +112,8 @@ public class DummyData {
 
         // Endereco 2
         Endereco endereco2 = Endereco.builder()
-                .logradouro("Carlos Alexandre")
-                .num(10)
+                .logradouro("Tenente José de Freitas")
+                .num(100)
                 .bairro("Frei Damião")
                 .cidade("Nova Cruz")
                 .uf("RN")
@@ -108,10 +123,9 @@ public class DummyData {
         enderecos.add(endereco1);
         enderecos.add(endereco2);
 
-        int tam = enderecos.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int i=0;i<= tam;i++){
-            repositoy_end.save(enderecos.get(i));
+        for(Endereco end: enderecos) {
+            Endereco enderecoSalvo = repositoryEnd.save(end);
+            System.out.println("[SAIDA] ID: " + enderecoSalvo.getId().toString());
         }
     }
 
@@ -145,13 +159,14 @@ public class DummyData {
                 .build();
 
 
+         caixas.add(caixa1);
+         caixas.add(caixa2);
+         caixas.add(caixa3);
 
-
-
-         repositoryCaixa.save(caixa1);
-         repositoryCaixa.save(caixa2);
-         repositoryCaixa.save(caixa3);
-
+        for(Caixa caixa: caixas) {
+            Caixa caixaSalvo = repositoryCaixa.save(caixa);
+            System.out.println("[SAIDA] ID: " + caixaSalvo.getId().toString());
+        }
 
     }
 
@@ -160,8 +175,6 @@ public class DummyData {
     public void salvarInvestiment(){
 
         List<Investimento> in = new LinkedList<>();
-
-
         Investimento i = Investimento.builder()
                 .data(new Date())
                 .descricao("Mesa")
@@ -178,39 +191,9 @@ public class DummyData {
         in.add(i);
         in.add(ii);
 
-        int tam = in.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int j=0;j<= tam;j++){
-            repositoryIn.save(in.get(j));
-        }
-    }
-
-    //@PostConstruct
-    public void salvarInvestimento(){
-
-        List<Investimento> in = new LinkedList<>();
-
-
-        Investimento i = Investimento.builder()
-                .data(new Date())
-                .descricao("Mesa")
-                .valor(10)
-                .build();
-
-        Investimento ii = Investimento.builder()
-                .data(new Date())
-                .descricao("Cadeira")
-                .valor(10)
-                .build();
-
-
-        in.add(i);
-        in.add(ii);
-
-        int tam = in.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int j=0;j<= tam;j++){
-            repositoryIn.save(in.get(j));
+        for(Investimento investimento: in) {
+            Investimento inSalvo = repositoryIn.save(investimento);
+            System.out.println("[SAIDA] ID: " + inSalvo.getId().toString());
         }
     }
 
@@ -235,25 +218,19 @@ public class DummyData {
                 .grupo("Blusa")
                 .build();
 
-
-
-
         prods.add(p);
         prods.add(pp);
 
-        int tam = prods.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int a=0;a<= tam;a++){
-            repositoryProduto.save(prods.get(a));
+        for(Produtos produto: prods) {
+            Produtos prodSalvo = repositoryProduto.save(produto);
+            System.out.println("[SAIDA] ID: " + prodSalvo.getId().toString());
         }
     }
 
-   // @PostConstruct
+    //@PostConstruct
     public void salvarEstoque(){
 
         List<Estoque> es = new LinkedList<>();
-
-
         Estoque e = Estoque.builder()
                 .quantidade(10)
                 .build();
@@ -263,14 +240,12 @@ public class DummyData {
                 .build();
 
 
-
         es.add(e);
         es.add(e2);
 
-        int tam = es.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int a=0;a<= tam;a++){
-            repositoryEstoque.save(es.get(a));
+        for(Estoque estoque: es) {
+            Estoque estoqueSalvo = repositoryEstoque.save(estoque);
+            System.out.println("[SAIDA] ID: " + estoqueSalvo.getId().toString());
         }
     }
 
@@ -293,10 +268,9 @@ public class DummyData {
         funs.add(f);
         funs.add(f2);
 
-        int tam = funs.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int a=0;a<= tam;a++){
-            repositoryFuncao.save(funs.get(a));
+        for(Funcao funcao: funs) {
+            Funcao funcSalvo = repositoryFuncao.save(funcao);
+            System.out.println("[SAIDA] ID: " + funcSalvo.getId().toString());
         }
     }
 
@@ -313,6 +287,14 @@ public class DummyData {
                 .login("Roberta@gmail.com")
                 .senha("1234")
                 .telefone("7777-7777")
+                .endereco(Endereco.builder()
+                        .logradouro("Carlos Alexandre")
+                        .num(10)
+                        .bairro("Frei Damião")
+                        .cidade("Nova Cruz")
+                        .uf("RN")
+                        .cep("59215000")
+                        .build())
                 .build();
 
         Funcionario fun2 = Funcionario.builder()
@@ -322,16 +304,23 @@ public class DummyData {
                 .login("Luana@gmail.com")
                 .senha("1234")
                 .telefone("7777-7777")
+                .endereco(Endereco.builder()
+                        .logradouro("Carlos Alexandre")
+                        .num(10)
+                        .bairro("Frei Damião")
+                        .cidade("Nova Cruz")
+                        .uf("RN")
+                        .cep("59215000")
+                        .build())
                 .build();
 
 
         funcs.add(fun1);
         funcs.add(fun2);
 
-        int tam = funcs.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int a=0;a<= tam;a++){
-            repositoryFuncionario.save(funcs.get(a));
+        for(Funcionario funcionario: funcs) {
+            Funcionario funcsSalvo = repositoryFuncionario.save(funcionario);
+            System.out.println("[SAIDA] ID: " + funcsSalvo.getId().toString());
         }
     }
 
@@ -339,8 +328,6 @@ public class DummyData {
     public void salvarDespesas(){
 
         List<Despesas> desps = new LinkedList<>();
-
-
         Despesas desp1 = Despesas.builder()
                 .descricao("Energia")
                 .data(new Date())
@@ -353,24 +340,39 @@ public class DummyData {
                 .valor(200)
                 .build();
 
-
-
         desps.add(desp1);
         desps.add(desp2);
 
-        int tam = desps.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int a=0;a<= tam;a++){
-            repositorydesp.save(desps.get(a));
+        for(Despesas despesas: desps) {
+            Despesas despSalvo = repositorydesp.save(despesas);
+            System.out.println("[SAIDA] ID: " + despSalvo.getId().toString());
         }
     }
 
     //@PostConstruct
     public void salvarVendas(){
 
+        List<Produtos> prods = new LinkedList<>();
+
+
+        Produtos p = Produtos.builder()
+                .descricao("Blusa estampada")
+                .valorCusto(10)
+                .valorVenda(20)
+                .grupo("Blusa")
+                .build();
+
+        Produtos pp = Produtos.builder()
+                .descricao("Blusa lisa")
+                .valorCusto(20)
+                .valorVenda(40)
+                .grupo("Blusa")
+                .build();
+
+        prods.add(p);
+        prods.add(pp);
+
         List<Vendas> vends = new LinkedList<>();
-
-
         Vendas v1 = Vendas.builder()
                 .data_Venda(new Date())
                 .preco_total(100)
@@ -383,18 +385,47 @@ public class DummyData {
                 .preco_total(200)
                 .desconto(20)
                 .forma_pagamento("Cartão")
+                .cliente(Cliente.builder()
+                        .nome("Maria")
+                        .cpf("700.000.000-00")
+                        .sexo("F")
+                        .telefone("3333-3333")
+                        .email("maria_tads@ifrn.com")
+                        .end(Endereco.builder()
+                                .logradouro("Carlos Alexandre")
+                                .num(10)
+                                .bairro("Frei Damião")
+                                .cidade("Nova Cruz")
+                                .uf("RN")
+                                .cep("59215000")
+                                .build())
+                        .build())
+                .funcionario(Funcionario.builder()
+                        .nome("Roberta")
+                        .sexo("F")
+                        .cpf("111111111")
+                        .login("Roberta@gmail.com")
+                        .senha("1234")
+                        .telefone("7777-7777")
+                        .endereco(Endereco.builder()
+                                .logradouro("Carlos Alexandre")
+                                .num(10)
+                                .bairro("Frei Damião")
+                                .cidade("Nova Cruz")
+                                .uf("RN")
+                                .cep("59215000")
+                                .build())
+                        .build())
+                .produtos(prods)
                 .build();
-
-
 
 
         vends.add(v1);
         vends.add(v2);
 
-        int tam = vends.size()-1;
-        System.out.println("Tamanho: "+tam);
-        for (int a=0;a<= tam;a++){
-            repositoryvend.save(vends.get(a));
+        for(Vendas venda: vends) {
+            Vendas vendaSalva = repositoryvend.save(venda);
+            System.out.println("[SAIDA] ID: " + vendaSalva.getId().toString());
         }
     }
 

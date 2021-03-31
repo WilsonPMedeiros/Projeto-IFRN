@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -23,10 +24,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente findById(Long id) {
-        return null;
+    public Cliente findById(Long id) {return repository.findById(id).get();
     }
-
 
     @Transactional
     public Cliente save(Cliente cliente) {

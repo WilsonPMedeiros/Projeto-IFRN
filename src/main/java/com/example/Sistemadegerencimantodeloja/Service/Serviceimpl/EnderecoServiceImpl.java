@@ -23,7 +23,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     @Override
     public Endereco findById(Long id) {
-        return null;
+        return  repository.findById(id).get();
     }
 
 
