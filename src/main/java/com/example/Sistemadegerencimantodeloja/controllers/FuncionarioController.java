@@ -6,10 +6,7 @@ import com.example.Sistemadegerencimantodeloja.model.Endereco;
 import com.example.Sistemadegerencimantodeloja.model.Funcionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -37,6 +34,7 @@ public class FuncionarioController {
         return mv;
     }
 
+
     @PostMapping("/cadastrarFuncionario")
     public String salvaFuncionario(Funcionario funcionario, Endereco endereco) {
         enderecoService.save(endereco);
@@ -44,5 +42,11 @@ public class FuncionarioController {
         funcionarioService.save(funcionario);
         return "redirect:/opcoesFuncionario";
 
+    }
+
+    @GetMapping(value = "/removerProduto/{id}")
+    public String deletarFuncionario(@PathVariable("id") long id){
+        funcionarioService.deleteById(id);
+        return "redirec:/opcoesFuncionario";
     }
 }

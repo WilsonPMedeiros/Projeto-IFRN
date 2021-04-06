@@ -59,6 +59,7 @@ public class ClientesController {
         return  "redirect:/opcoes";
     }
 
+    //chama a VIEW da edicao
     @GetMapping("/{id}")
     public ModelAndView editarCliente(@PathVariable("id") long id){
         ModelAndView mv = new ModelAndView("/EditarCliente.html");
@@ -69,6 +70,9 @@ public class ClientesController {
         return  mv;
     }
 
+
+
+  ///METODOS QUE TALVEZ SEJAM INUTEIS< APAGAR DEPOIS SE NÂO DER MERDA
     /*public ModelAndView editar(Cliente cliente, Endereco endereco){
         ModelAndView mv = new ModelAndView("/EditarCliente");
         mv.addObject("cliente",cliente);
@@ -85,7 +89,7 @@ public class ClientesController {
         return mv;
     }*/
 
-
+/*
     //Save Isolado do Endereco
     @PostMapping("/editarEndereco/{id}")
     public String atualizarCliente(@PathVariable("id") long id,
@@ -102,7 +106,10 @@ public class ClientesController {
         return "redirect:/opcoes";
     }
 
-    //Save do Cliente
+/
+ */
+
+    //Atualiza do Cliente
     @PostMapping("/editarCliente/{id}")
     public String atualizarCliente(@PathVariable("id") long id,
                                    @ModelAttribute("cliente") Cliente cliente,

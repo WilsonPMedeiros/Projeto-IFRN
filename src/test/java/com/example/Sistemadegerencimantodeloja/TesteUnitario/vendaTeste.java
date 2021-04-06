@@ -71,7 +71,7 @@ public class vendaTeste {
     }
 
     @Test
-    public  void addProdutoTest(){
+    public void addProdutoTest(){
         this.vendas.addProduto(this.produto);
         double valoratual = vendas.getPreco_total();
         assertEquals(this.produto.getValorVenda(), valoratual, 0.1);

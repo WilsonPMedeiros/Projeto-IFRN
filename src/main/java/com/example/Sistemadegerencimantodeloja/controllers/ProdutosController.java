@@ -35,7 +35,7 @@ public class ProdutosController {
     }
 
     @GetMapping(value = "/cadastrarProduto")
-    public ModelAndView cadastrarCleintes(Produtos produto, Estoque estoque){
+    public ModelAndView cadastrarProdutos(Produtos produto, Estoque estoque){
         ModelAndView mv= new ModelAndView("/cadastrodeproduto");
         mv.addObject("produto",produto);
         mv.addObject("estoque",estoque);

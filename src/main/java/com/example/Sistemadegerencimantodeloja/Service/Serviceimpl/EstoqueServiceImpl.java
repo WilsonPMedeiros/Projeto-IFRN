@@ -60,7 +60,6 @@ public class EstoqueServiceImpl implements EstoqueService {
         BooleanExpression expression = qProdutos.valorVenda.loe(v);
         System.out.println(expression.toString());
         return produtosRepository.findAll(expression);
-
     }
 
 }

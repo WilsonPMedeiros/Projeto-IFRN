@@ -40,7 +40,6 @@ public class ClienteServiceImpl implements ClienteService {
     public Cliente findByCpf(String cpf){
         return repository.findByCpf(cpf);
 
-
     }
 
 
