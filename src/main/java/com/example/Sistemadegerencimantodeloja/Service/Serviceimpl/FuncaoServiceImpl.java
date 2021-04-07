@@ -24,10 +24,13 @@ public class FuncaoServiceImpl implements FuncaoService {
 
     @Override
     public Funcao findById(Long id) {
-        return null;
+        return repository.findById(id).get();
     }
 
-
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
     @Override
     public Funcao save(Funcao funcao) {
         return null;

@@ -26,7 +26,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public Funcionario findById(Long id) {
-        return null;
+        return repository.findById(id).get();
     }
 
 

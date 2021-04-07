@@ -55,10 +55,12 @@
                 <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
                         <tr>
-                            <th id="trs-hd" class="col-lg-1">Nome</th>
-                            <th id="trs-hd" class="col-lg-2">CPF</th>
-                            <th id="trs-hd" class="col-lg-3">Função</th>
-                            <th id="trs-hd" class="col-lg-2">ID</th>
+                            <th id="trs-hd" class="col-lg-1">ID</th>
+                            <th id="trs-hd" class="col-lg-2">Nome</th>
+                            <th id="trs-hd" class="col-lg-3">CPF</th>
+                            <th id="trs-hd" class="col-lg-2">Telefone</th>
+                            <th id="trs-hd" class="col-lg-2">Funcao</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -71,9 +73,10 @@
                             <td th:text="${funcionario.nome}"></td>
                             <td th:text="${funcionario.cpf}"></td>
                             <td th:text="${funcionario.telefone}"></td>
+                            <td th:text="${funcionario.funcao}"></td>
                             <td>
-                                <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar/cliente'}">Editar</a></button>
-                                <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a>Excluir</a></button></td>
+                                <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar'+funcionario.id}">Editar</a></button>
+                                <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/opcoes/excluirFuncionario/'+funcionario.id}">Excluir</a></button></td>
                         </tr>
                     </tbody>
                 </table>

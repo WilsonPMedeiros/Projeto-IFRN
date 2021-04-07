@@ -21,6 +21,7 @@ public class Funcao {
     @Column(name = "nome", nullable = false)
     private String nome;
 
+    /*
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "f")
-    private Funcionario funcionario;
+    private Funcionario funcionario;*/
 }

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<htm  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -50,64 +50,65 @@
         </div>
         </nav>
         <div class="content"><label class="text-left text-dark"><strong>Editar funcionário&nbsp;</strong></label>
-            <form>
+            <form method="post" th:action="@{/EditarFuncionario/{id}(id=${funcionario.id})}" th:object="${funcionario}">
                 <div class="form-row">
                     <div class="col-sm-12">
-                        <div class="form-group"><label>Nome</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Nome</label><input class="form-control" th:value="${funcionario.nome}" type="text" name="nome" id="FuncNome"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-6">
-                        <div class="form-group"><label>Email</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Email</label><input class="form-control" th:value="${funcionario.login}" type="text" name="login" id="FuncEmail"></div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="form-group"><label>Senha</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Senha</label><input class="form-control" th:value="${funcionario.senha}"type="text" name="senha" id="FuncSenha" ></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-4">
-                        <div class="form-group"><label>CPF</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>CPF</label><input class="form-control" type="text" th:value="${funcionario.cpf}" name="cpf" id="FuncCPF"></div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Sexo</label><input class="form-control" type="text"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>ID</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Sexo</label><input class="form-control" th:value="${funcionario.sexo}" type="text" name="sexo" id="FuncSexo"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-3 col-lg-9">
-                        <div class="form-group"><label>Função</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Função</label><input class="form-control" th:value="${funcionario.funcao}"type="text" name="funcao" id="FuncFucao"></div>
                     </div>
                     <div class="col-sm-3 offset-lg-0">
-                        <div class="form-group"><label>Telefone</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Telefone</label><input class="form-control" th:value="${funcionario.telefone}" type="text" name="telefone" id="FuncTelefone"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-10">
-                        <div class="form-group"><label>Logradouro</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Logradouro</label><input class="form-control" th:value="${funcionario.endereco.logradouro}"type="text"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>Número</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Número</label><input class="form-control" th:value="${funcionario.endereco.num}"type="text" name="num" id="FuncNum"></div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-sm-2 col-lg-4">
-                        <div class="form-group"><label>Cidade</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Cidade</label><input class="form-control" th:value="${funcionario.endereco.cidade}" type="text" name="cidade" id="FuncCidade"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Bairro</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Bairro</label><input class="form-control" th:value="${funcionario.endereco.bairro}" type="text" name="bairro" id="FuncBairro"></div>
                     </div>
                     <div class="col-sm-2 col-lg-3">
-                        <div class="form-group"><label>Cep</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Cep</label><input class="form-control" type="text" name="cep" id="FuncCep"></div>
                     </div>
                     <div class="col-sm-2">
-                        <div class="form-group"><label>UF</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>UF</label><input class="form-control" th:value="${funcionario.endereco.uf}"type="text"name="uf" id="FuncUF"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group"><label>Logradouro</label><input class="form-control" th:value="${funcionario.endereco.logradouro}"type="text"name="logradouro" id="FuncUF"></div>
                     </div>
                 </div>
+                <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button><button class="btn btn-danger" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;"
+                                                                                                                                                                                                                                                    type="submit">Salvar</button></div>
             </form>
-            <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button><button class="btn btn-danger" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;"
-                    type="button">Salvar</button></div>
+
         </div>
     </div>
     </div>

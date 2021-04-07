@@ -38,16 +38,16 @@ public class Funcionario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "id_funcao")
-    private Funcao f;
+    private Funcao funcao;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "id_end")
     private Endereco endereco;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "funcionario")
-    private Vendas vendas;
+   /* @OneToOne(fetch = FetchType.LAZY, mappedBy = "funcionario")
+    private Vendas vendas;*/
 
 
 }

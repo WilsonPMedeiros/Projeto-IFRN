@@ -2,6 +2,7 @@ package com.example.Sistemadegerencimantodeloja.controllers;
 
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.EnderecoServiceImpl;
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.FuncionarioServiceImpl;
+import com.example.Sistemadegerencimantodeloja.model.Cliente;
 import com.example.Sistemadegerencimantodeloja.model.Endereco;
 import com.example.Sistemadegerencimantodeloja.model.Funcionario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,14 @@ public class FuncionarioController {
         return mv;
     }
 
+    @GetMapping("/editar{id}")
+    public ModelAndView editarfuncioario(@PathVariable("id") long id){
+        ModelAndView mv = new ModelAndView("/EditarFuncionario.html");
+        Funcionario funcionario = funcionarioService.findById(id);
+        System.out.println(funcionario);
+        mv.addObject("funcionario", funcionario);
+        return  mv;
+    }
 
     @PostMapping("/cadastrarFuncionario")
     public String salvaFuncionario(Funcionario funcionario, Endereco endereco) {
@@ -44,9 +53,40 @@ public class FuncionarioController {
 
     }
 
-    @GetMapping(value = "/removerProduto/{id}")
+    @GetMapping(value = "/opcoes/excluirFuncionario/{id}")
     public String deletarFuncionario(@PathVariable("id") long id){
         funcionarioService.deleteById(id);
-        return "redirec:/opcoesFuncionario";
+        return "redirect:/opcoesFuncionario";
+    }
+
+
+    //atualiza funcionário
+    @PostMapping("/EditarFuncionario/{id}")
+    public String atualizarCliente(@PathVariable("id") long id,
+                                   @ModelAttribute("funcionario") Funcionario funcionario,
+                                   @ModelAttribute("endereco") Endereco endereco){
+        Funcionario funcionarioEditado = funcionarioService.findById(id);
+        Endereco enderecoEditado= enderecoService.findById(funcionarioEditado.getEndereco().getId());
+        System.out.println("Esse é o endereco editado: "+ enderecoEditado);
+        System.out.println("Esse é o cliente Editado: "+ funcionarioEditado);
+        if (!funcionarioEditado.equals(funcionario)) {
+            funcionarioEditado.setNome(funcionario.getNome());
+            funcionarioEditado.setTelefone(funcionario.getTelefone());
+            funcionarioEditado.setLogin(funcionario.getLogin());
+            funcionarioEditado.setSexo(funcionario.getSexo());
+            funcionarioEditado.setCpf(funcionario.getCpf());
+
+            enderecoEditado.setCep(endereco.getCep());
+            enderecoEditado.setNum(endereco.getNum());
+            enderecoEditado.setLogradouro(endereco.getLogradouro());
+            enderecoEditado.setUf(endereco.getUf());
+            enderecoEditado.setCidade(endereco.getCidade());
+            enderecoEditado.setBairro(endereco.getBairro());
+            enderecoService.save(enderecoEditado);
+            System.out.println("Dados do endereco editado: " + enderecoEditado);
+            funcionarioEditado.setEndereco(enderecoEditado);
+            funcionarioService.save(funcionarioEditado); // Cadastra e atualiza
+        }
+        return "redirect:/opcoes";
     }
 }

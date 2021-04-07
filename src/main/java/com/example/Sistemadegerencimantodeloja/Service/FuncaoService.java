@@ -10,4 +10,5 @@ public interface FuncaoService {
     List<Funcao> findAll();
     Funcao findById(Long id);
     Funcao save(Funcao funcao);
+    void deleteById(Long id);
 }
