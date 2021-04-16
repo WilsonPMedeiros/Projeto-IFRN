@@ -1,7 +1,10 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +13,8 @@ import java.util.Date;
 @Table(name="tb_investimentos")
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Investimento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +24,7 @@ public class Investimento {
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data", nullable = false)
     private Date data;
 
