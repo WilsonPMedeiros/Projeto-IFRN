@@ -25,7 +25,7 @@ public class ProdutosServiceImpl implements ProdutosService {
 
     @Override
     public Produtos findById(Long id) {
-        return null;
+        return repository.findById(id).get();
     }
 
 

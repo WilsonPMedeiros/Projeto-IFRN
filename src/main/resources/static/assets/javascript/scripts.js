@@ -7,10 +7,27 @@
         alert("teste", nome);
  }
 
-  function addFuncionario(){
-     var id=$("#funcionarioId");
-     var nome=$("#funcionarioNome").val();
-     var cpf=$("#funcionarioCPF");
-     var email=$("#funcionarioEmail");
-         $("#nomeInputCliente").val(nome);
+  function addFuncionario(idFunc){
+   idFunc = (typeof idFunc !== 'undefined') ? idFunc : 1;
+    return idFunc;
+
   }
+
+  $(document).on("click", ".cliente", function(){
+            var idFuncionario= $(this).find("#cId").text();
+             $("#nomeInputCliente").val(idFuncionario);
+        });
+
+ $(document).on("click", ".funcionario", function(){
+          var idFuncionario= $(this).find("#fId").text();
+           $("#nomeInputFuncionario").val(idFuncionario);
+      });
+
+
+
+
+  $(document).on("click", ".produto", function(){
+          var idProduto = $(this).find("#pId").text();
+           $("#nomeInputProduto").val(idProduto);
+      });
+

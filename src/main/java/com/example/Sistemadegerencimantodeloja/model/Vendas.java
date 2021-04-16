@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Vendas {
 
 
@@ -41,6 +43,7 @@ public class Vendas {
     @Column(name = "preco_total")
     private double preco_total;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_Venda")
     private Date data_Venda;
 
