@@ -2,6 +2,7 @@ package com.example.Sistemadegerencimantodeloja.model;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +17,7 @@ public class Caixa {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data", nullable = false)
     private Date data;
 
