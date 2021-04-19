@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -50,27 +50,20 @@
         </div>
         </nav>
         <div class="content"><label><strong>Fechamento de caixa</strong><br></label>
-            <form>
+            <form method="post">
                 <div class="form-row">
+
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Id</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Saída</label><input class="form-control" type="text" name="saida"></div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Entrada</label><input class="form-control" type="text"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>Saída</label><input class="form-control" type="text"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>Saldo</label><input class="form-control" type="text"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>Data</label><input class="form-control" type="text"></div>
+                        <div class="form-group"><label>Data</label><input class="form-control" type="date" name="data"></div>
                     </div>
                 </div>
+                <div class="col-md-12 col-lg-11 offset-lg-0" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button>
+                    <button class="btn btn-danger align-self-baseline" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;" type="submit">Salvar</button></div>
             </form>
-            <div class="col-md-12 col-lg-11 offset-lg-0" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button><button class="btn btn-danger align-self-baseline" style="border:none;width:151px;height:58px;margin-left:14px;background-color:#a0c65d;"
-                    type="button">Salvar</button></div>
+
         </div>
     </div>
     </div>

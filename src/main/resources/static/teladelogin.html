@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -25,15 +25,17 @@
     <section>
         <div class="container">
             <div class="photo-card">
-                <div class="photo-background" style="background-image:url(&quot;assets/img/product-aeon-feature.jpg&quot;);"></div>
+                <div style="background-color: #ffffff";>
+                    <img src="assets/img/logo2.png" width=300 height=100>
+                </div>
                 <div class="photo-details">
                     <div class="login-card"><img class="profile-img-card" src="assets/img/avatar_2x.png">
-                        <p class="profile-name-card"> </p>
-                        <form class="form-signin"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus=""><input class="form-control" type="password" id="inputPassword" required="" placeholder="Password">
-                            <div
-                                class="checkbox">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Remember me</label></div>
-                    </div><button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button></form><a class="forgot-password" href="#">Forgot your password?</a></div>
+                        <p class="profile-name-card" > </p>
+                        <div th:text = "${mensagem}" th:if ="mensagem != null"></div>
+                        <form class="form-signin" method="post" action="/efetuarLogin" th:object=" ${funcionario}" >
+                            <span class="reauth-email"> </span><input class="form-control" type="text" id="inputEmail" name="login" required="" placeholder="Email address" autofocus=""><input class="form-control" type="text" name="senha" id="inputPassword" required="" placeholder="Password">
+
+                    <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button></form></div>
             </div>
         </div>
         </div>

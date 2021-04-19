@@ -39,4 +39,8 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
+
+
+
+
 }

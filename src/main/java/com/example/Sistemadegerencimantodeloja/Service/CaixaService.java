@@ -1,7 +1,7 @@
 package com.example.Sistemadegerencimantodeloja.Service;
 
 import com.example.Sistemadegerencimantodeloja.model.Caixa;
-import com.example.Sistemadegerencimantodeloja.model.Vendas;
+import com.querydsl.core.types.dsl.NumberExpression;
 
 import java.util.Date;
 import java.util.List;
@@ -12,4 +12,5 @@ public interface CaixaService {
     Caixa findById(Long id);
     Caixa save(Caixa caixa);
     Iterable<Caixa>  buscarNoIntervalo(Date dataI, Date dataF);
+    Iterable<Caixa> buscarSaldo();
 }

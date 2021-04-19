@@ -21,11 +21,11 @@ public class Caixa {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "data", nullable = false)
     private Date data;
 
-    @Column(name = "entrega", nullable = false)
+    @Column(name = "entrada", nullable = false)
     private double entrada;
 
     @Column(name = "saida", nullable = false)
@@ -33,5 +33,6 @@ public class Caixa {
 
     @Column(name = "saldo", nullable = false)
     private double saldo;
+
 
 }

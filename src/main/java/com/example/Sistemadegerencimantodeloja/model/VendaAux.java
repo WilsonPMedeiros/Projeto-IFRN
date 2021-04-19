@@ -5,40 +5,42 @@ import java.util.Objects;
 public class VendaAux {
     double valor;
     int quantidade;
-    int  cliente;
-    long produto;
+   //int  cliente;
+    Produtos produto;
+
 
     public double getValor() {
-        return valor;
+        return this.valor;
     }
 
     public int getQuantidade() {
-        return quantidade;
+
+        return this.quantidade;
     }
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
-    public int getCliente() {
-        return cliente;
-    }
+ //   public int getCliente() {
+  //      return cliente;
+    //}
 
-    public void setCliente(int cliente) {
-        this.cliente = cliente;
-    }
+    //public void setCliente(int cliente) {
+   //    this.cliente = cliente;
+  //  }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VendaAux vendaAux = (VendaAux) o;
-        return Double.compare(vendaAux.valor, valor) == 0 && quantidade == vendaAux.quantidade && cliente == vendaAux.cliente && produto == vendaAux.produto;
+        return Double.compare(vendaAux.valor, valor) == 0 && quantidade == vendaAux.quantidade  && produto == vendaAux.produto;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(valor, quantidade, cliente, produto);
+        return Objects.hash(valor, quantidade, produto);
     }
 
     @Override
@@ -46,16 +48,16 @@ public class VendaAux {
         return "VendaAux{" +
                 "valor=" + valor +
                 ", quantidade=" + quantidade +
-                ", cliente=" + cliente +
+                //", cliente=" + cliente +
                 ", produto=" + produto +
                 '}';
     }
 
-    public long getProduto() {
+    public Produtos getProduto() {
         return produto;
     }
 
-    public void setProduto(long produto) {
+  public void setProduto(Produtos produto) {
         this.produto = produto;
     }
 

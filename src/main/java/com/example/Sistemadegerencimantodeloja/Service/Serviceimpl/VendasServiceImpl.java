@@ -2,19 +2,21 @@ package com.example.Sistemadegerencimantodeloja.Service.Serviceimpl;
 
 import com.example.Sistemadegerencimantodeloja.Service.VendasService;
 import com.example.Sistemadegerencimantodeloja.model.*;
+import com.example.Sistemadegerencimantodeloja.repository.ProdutosRepository;
 import com.example.Sistemadegerencimantodeloja.repository.VendasRepository;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.ZoneId;
 import java.util.*;
 
 
 
 @Service
-public class VendasServiceImpl implements VendasService {
+public class VendasServiceImpl implements VendasService{
 
     @Autowired
     VendasRepository repository;
@@ -29,16 +31,15 @@ public class VendasServiceImpl implements VendasService {
         return repository.findById(id).get();
     }
 
-
-    @Override
+    @Transactional
     public Vendas save(Vendas vendas) {
-        return null;
+        return repository.save(vendas);
     }
 
-    @Override
+   /* @Override
     public Vendas add(Produtos produtos) {
         return  Vendas.builder().build();
-    }
+    }*/
 
     @Override
     public Iterable<Vendas> buscarNoIntervalo(Date dataI, Date dataF) {
@@ -51,9 +52,9 @@ public class VendasServiceImpl implements VendasService {
         return repository.findAll(expression);
     }
 
-    public double somarValor(double valor, int quant){
-        return valor*quant;
-    }
+   // public double somarValor(double valor, int quant){
+     //   return valor*quant;
+    //}
 
 
 

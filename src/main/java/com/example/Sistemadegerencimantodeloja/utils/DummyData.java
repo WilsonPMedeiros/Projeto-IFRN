@@ -416,7 +416,7 @@ public class DummyData {
                                 .cep("59215000")
                                 .build())
                         .build())
-                .produtos(prods)
+                .produtos( prods)
                 .build();
 
 

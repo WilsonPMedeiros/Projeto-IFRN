@@ -19,9 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Vendas {
 
-
     public Vendas(Funcionario f, Cliente c){
-
         this.funcionario = f;
         this.cliente = c;
         this.produtos = new LinkedList<Produtos>();
@@ -60,8 +58,6 @@ public class Vendas {
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
-
-
 
     public void addProduto(Produtos p) {
             this.produtos.add(p);

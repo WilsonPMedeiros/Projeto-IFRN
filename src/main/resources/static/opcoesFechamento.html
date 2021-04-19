@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -49,7 +49,7 @@
                 </div>
         </div>
         </nav>
-        <div class="col-md-12 search-table-col" style="filter: blur(0px);"><span class="counter pull-right"></span><a class="navbar-brand" href="#" style="color: rgb(132,142,140);"><br></a><a class="navbar-brand" href="#"><br></a><span style="background-color: #6891a2;color: rgb(255,255,255);"><strong>Adicionar +</strong></span>
+        <div class="col-md-12 search-table-col" style="filter: blur(0px);"><a class="navbar-brand" href="/adicionarSaida"><br>Adicionar +</a>
             <div
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
@@ -63,17 +63,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="warning no-result">
+
+                        <tr th:each="saida:${saidas}">
                             <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
-                            <td>Cell 2</td>
-                            <td>Cell 3</td>
-                        </tr>
-                        <tr>
-                            <td>001</td>
-                            <td>12/03/2021</td>
-                            <td>R$100,00</td>
-                            <td>R$50,00</td>
-                            <td>R$50,00</td>
+                            <td th:text="${saida.id}"></td>
+                            <td th:text="${saida.data}"></td>
+                            <td th:text="${saida.entrada}"></td>
+                            <td th:text="${saida.saida}"></td>
                             <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
                         </tr>
                     </tbody>

@@ -1,14 +1,19 @@
 package com.example.Sistemadegerencimantodeloja.Service.Serviceimpl;
 
 import com.example.Sistemadegerencimantodeloja.Service.CaixaService;
-import com.example.Sistemadegerencimantodeloja.Service.ClienteService;
 import com.example.Sistemadegerencimantodeloja.model.*;
 import com.example.Sistemadegerencimantodeloja.repository.CaixaRepository;
-import com.example.Sistemadegerencimantodeloja.repository.ClienteRepository;
+import com.querydsl.core.types.Expression;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.NumberExpression;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -29,9 +34,9 @@ public class CaixaServiceImpl implements CaixaService {
     }
 
 
-    @Override
+   @Transactional
     public Caixa save(Caixa caixa) {
-        return null;
+        return repository.save(caixa);
     }
 
     @Override
@@ -41,4 +46,14 @@ public class CaixaServiceImpl implements CaixaService {
         System.out.println(expression.toString());
         return repository.findAll(expression);
     }
-}
+
+
+    @Override
+    public Iterable<Caixa> buscarSaldo() {
+        QCaixa qCaixa= QCaixa.caixa;
+        OrderSpecifier<Double> expression=qCaixa.saldo.asc();
+        System.out.println("Soma dos saldos "+  expression.toString());
+        return repository.findAll(expression);
+        }
+    }
+

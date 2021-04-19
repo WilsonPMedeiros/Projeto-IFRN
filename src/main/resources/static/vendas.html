@@ -84,7 +84,7 @@
                                 <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
                             </tr>
 
-                            <tr>
+                            <tr th:each="venda:${vendas}">
                                 <td ><strong>valor:&nbsp;</strong><input th:text="#{venda.valor}" type="text"></td>
                                 <td><strong>Desconto:&nbsp;</strong><input th:text="#{venda.cliente}" type="text"></td>
                                 <td><strong>Acrescimo:</strong><input th:text="#{venda.produto}" type="text"></td>
