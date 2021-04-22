@@ -74,7 +74,10 @@
                 </div>
                 <div class="form-row">
                     <div class="col-sm-3 col-lg-9">
-                        <div class="form-group"><label>Função</label><input class="form-control" th:value="${funcionario.funcao.nome}"type="text" name="descricao" id="FuncFucao"></div>
+                        <div class="form-group"><label>Função</label><input class="form-control" th:value="${funcionario.funcao.id}"type="number" name="funcao" id="funcao"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-secondary" style="border: none;width: 151px;height: 40px;margin: 30px;" data-toggle="modal" data-target="#modalFuncao">Listar</button>
                     </div>
                     <div class="col-sm-3 offset-lg-0">
                         <div class="form-group"><label>Telefone</label><input class="form-control" th:value="${funcionario.telefone}" type="text" name="telefone" id="FuncTelefone"></div>
@@ -112,10 +115,40 @@
         </div>
     </div>
     </div>
+    <div class="modal" tabindex="-1" role="dialog" id="modalFuncao">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Funcionarios</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-hover">
+                        <thead class="bill-header cs">
+                        <tr>
+                            <th id="trs-hd" class="col-lg-1">id</th>
+                            <th id="trs-hd" class="col-lg-2">nome</th>
+                            <th id="trs-hd" class="col-lg-3">salario</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="funcaoFuncionario" th:each="funcao : ${funcoes}">
+                            <td th:text="${funcao.id}" id="fId">
+                            <td th:text="${funcao.nome}" id="funcionarioCPF" ></td>
+                            <td th:text="${funcao.salario}" id="funcionarioEmail"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Dashboard-layout-v11.js"></script>
     <script src="assets/js/Table-With-Search.js"></script>
+    <script th:inline="javascript" src="assets/javascript/scripts.js"></script>
 </body>
-
-</html>
+    </html>

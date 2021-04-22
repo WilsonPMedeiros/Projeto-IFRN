@@ -48,6 +48,8 @@ public class FuncionarioController {
         ModelAndView mv = new ModelAndView("/EditarFuncionario.html");
         Funcionario funcionario = funcionarioService.findById(id);
         System.out.println(funcionario);
+        List<Funcao>  funcao = funcaoService.findAll();
+        mv.addObject("funcoes", funcao);
         mv.addObject("funcionario", funcionario);
         return  mv;
     }
@@ -75,17 +77,20 @@ public class FuncionarioController {
     @PostMapping("/EditarFuncionario/{id}")
     public String atualizarCliente(@PathVariable("id") long id,
                                    @ModelAttribute("funcionario") Funcionario funcionario,
-                                   @ModelAttribute("endereco") Endereco endereco){
+                                   @ModelAttribute("endereco") Endereco endereco,
+                                   @RequestParam("funcao") long idfuncao){
         Funcionario funcionarioEditado = funcionarioService.findById(id);
         Endereco enderecoEditado= enderecoService.findById(funcionarioEditado.getEndereco().getId());
         System.out.println("Esse é o endereco editado: "+ enderecoEditado);
         System.out.println("Esse é o cliente Editado: "+ funcionarioEditado);
+        Funcao f = funcaoService.findById(idfuncao);
         if (!funcionarioEditado.equals(funcionario)) {
             funcionarioEditado.setNome(funcionario.getNome());
             funcionarioEditado.setTelefone(funcionario.getTelefone());
             funcionarioEditado.setLogin(funcionario.getLogin());
             funcionarioEditado.setSexo(funcionario.getSexo());
             funcionarioEditado.setCpf(funcionario.getCpf());
+            funcionarioEditado.setFuncao(f);
             enderecoEditado.setCep(endereco.getCep());
             enderecoEditado.setNum(endereco.getNum());
             enderecoEditado.setLogradouro(endereco.getLogradouro());
@@ -97,7 +102,7 @@ public class FuncionarioController {
             funcionarioEditado.setEndereco(enderecoEditado);
             funcionarioService.save(funcionarioEditado); // Cadastra e atualiza
         }
-        return "redirect:/opcoes";
+        return "redirect:/opcoesFuncionario";
     }
 
 
