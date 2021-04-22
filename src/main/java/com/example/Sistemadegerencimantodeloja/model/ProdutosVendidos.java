@@ -1,21 +1,10 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name="tb_produtos")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Produtos {
+@Table(name="tb_produtos_vendidos")
+public class ProdutosVendidos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -33,7 +22,7 @@ public class Produtos {
     @Column(name = "grupo", nullable = false)
     private String grupo;
 
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    private Vendas vendas;*/
+    //@OneToOne()
+
 
 }

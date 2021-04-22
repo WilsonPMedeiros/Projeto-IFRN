@@ -54,10 +54,10 @@
 
                 <div class="form-row">
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Funcionario</label><input class="form-control" type="text" id="nomeInputFuncionario" name="funcionario"></div><button type="button" data-toggle="modal" data-target="#modalFuncionario">ADD</button>
+                        <div class="form-group"><label>Funcionario</label><input class="form-control" type="text" id="nomeInputFuncionario" name="nomeInputFuncionario"></div><button type="button" data-toggle="modal" data-target="#modalFuncionario">ADD</button>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Cliente</label><input class="form-control" type="text" id="nomeInputCliente" name="cliente"></div><button type="button" data-toggle="modal" data-target="#exampleModal">ADD</button>
+                        <div class="form-group"><label>Cliente</label><input class="form-control" type="text" id="nomeInputCliente" name="nomeInputCliente"></div><button type="button" data-toggle="modal" data-target="#exampleModal">ADD</button>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group"><label>Produto</label><input class="form-control" type="text" name="nomeInputProduto" id="nomeInputProduto"></div><button type="button" data-toggle="modal" data-target="#modalProduto">ADD</button>
@@ -65,7 +65,7 @@
                     <div class="col-sm-4">
                         <div class="form-group"><label>Quantidade</label><input class="form-control" type="text" name="quant" id="quant"></div>
                     </div>
-                    <div class="col"><button class="btn btn-danger" style="border: none;width: 151px;height: 40px;background-color: #98e867;margin: 30px;" type="submit">Adicionar</button></div>
+                    <div class="col"><button class="btn btn-danger" style="border: none;width: 151px;height: 40px;background-color: #98e867;margin: 30px;" type="submit" >Adicionar</button></div>
                 </div>
             </form>
             <div class="col-md-12 search-table-col"><span class="counter pull-right"></span>
@@ -85,12 +85,15 @@
                             </tr>
 
                             <tr th:each="venda:${vendas}">
-                                <td ><strong>valor:&nbsp;</strong><input th:text="#{venda.valor}" type="text"></td>
-                                <td><strong>Desconto:&nbsp;</strong><input th:text="#{venda.cliente}" type="text"></td>
-                                <td><strong>Acrescimo:</strong><input th:text="#{venda.produto}" type="text"></td>
-                                <td><strong>valor:</strong><input th:text="#{venda.valor}" type="text"></td>
-                                <td><button class="btn btn-danger" style="margin-left: 5px;background-color: rgb(27,181,43);" type="submit"><i class="fa fa-check-circle-o" style="font-size: 15px;"></i></button></td>
+                                <tr th:each="produto:${venda}">
+                                    <td th:text="${produtos.id}" type="text"><strong>Id:&nbsp;</strong><input ></td>
+                                    <td th:text="${produtos.valorvenda}"><strong>Descricao:&nbsp;</strong><input  type="text"></td>
+                                    <td th:text="${produtos.descricao}"><strong>Acrescimo:</strong><input  type="text"></td>
+
+                                </tr>
+                            <!--<td><stro$g>valor:</strong><input th:text="#{venda.valor}" type="text"></td>-->
                             </tr>
+                            <td><button class="btn btn-danger" style="margin-left: 5px;background-color: rgb(27,181,43);" type="submit"><i class="fa fa-check-circle-o" style="font-size: 15px;"></i></button></td>
 
                         </tbody>
                     </table>

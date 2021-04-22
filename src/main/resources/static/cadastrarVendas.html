@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11-1.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11-2.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11.css">
+    <link rel="stylesheet" href="assets/css/dh-card-image-left-dark.css">
+    <link rel="stylesheet" href="assets/css/Features-Boxed.css">
+    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="assets/css/Navbar-with-menu-and-login.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search-1.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" >
+        <div class="sidebar-wrapper" style="background-color: #C4C4C4">
+            <div class="logo"><a class="simple-text" href="#">Admin dashboard</a></div>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="/opcoesFuncionario"><FONT COLOR="#ffffff"><span>Funcionarios</span></FONT></a></li>
+                <li class="list-group-item"><a href="/opcoes"><FONT COLOR="#ffffff"><span>Clientes</span></FONT></a></li>
+                <li class="list-group-item"><a href="/opcoesVendas"><FONT COLOR="#ffffff"><span>Vendas</span></FONT></a></li>
+                <li class="list-group-item"><a href="/#"><FONT COLOR="#ffffff"><span>Financeiro</span></FONT></a></li>
+                <li class="list-group-item"><a href="/opcaoestoque"><FONT COLOR="#ffffff"><span>Estoque</span></FONT></a></li>
+                <li class="list-group-item"><a href="#"><FONT COLOR="#ffffff"><span>Relatórios</span></FONT></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid">
+                <div><a class="navbar-brand" href="#"><strong><em><img src="assets/img/logo2.png" width=100 height=50></em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+                <div
+                        class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav"></ul>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="content"><label><strong>Vendas</strong><br></label>
+            <form method="post" >
+
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <div class="form-group"><label>Funcionario</label><input class="form-control" type="number" id="nomeInputFuncionario" name="nomeInputFuncionario"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-secondary" style="border: none;width: 151px;height: 40px;margin: 30px;" type="button" data-toggle="modal" data-target="#modalFuncionario">Listar</button>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-4">
+                        <div class="form-group"><label>Cliente</label><input class="form-control" type="number" id="nomeInputCliente" name="nomeInputCliente"></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-secondary" style="border: none;width: 151px;height: 40px;margin: 30px;" data-toggle="modal" data-target="#exampleModal">Listar</button>
+                    </div>
+                </div>
+                <div class="col-sm-4"><button class="btn btn-danger" style="border: none;width: 151px;height: 40px;background-color: #98e867;margin: 30px;" type="submit" >Adicionar</button></div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!---Modal  clente---->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Clientes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-hover">
+                    <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd" class="col-lg-1">id</th>
+                        <th id="trs-hd" class="col-lg-2">cpf</th>
+                        <th id="trs-hd" class="col-lg-3">email</th>
+                        <th id="trs-hd" class="col-lg-3">nome</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="cliente" th:each="cliente : ${clientes}">
+                        <td th:text="${cliente.id}" id="cId"><input th:text="${cliente.id}" name="id" class="invisible"></td>
+                        <td th:text="${cliente.cpf}" id="clienteCPF" ></td>
+                        <td th:text="${cliente.email}" id="clienteEmail"></td>
+                        <td th:text="${cliente.nome}" ></td><input  id="clienteNome" th:value="${cliente.nome}" class="invisible">
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="modalFuncionario">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Funcionarios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-hover">
+                    <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd" class="col-lg-1">id</th>
+                        <th id="trs-hd" class="col-lg-2">cpf</th>
+                        <th id="trs-hd" class="col-lg-3">e-mail</th>
+                        <th id="trs-hd" class="col-lg-3">nome</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="funcionario" th:each="funcionario : ${funcionarios}">
+                        <td th:text="${funcionario.id}" id="fId">
+                        <td th:text="${funcionario.cpf}" id="funcionarioCPF" ></td>
+                        <td th:text="${funcionario.login}" id="funcionarioEmail"></td>
+                        <td th:text="${funcionario.nome}" ></td><input  id="funcionarioNome" th:value="${funcionario.id}" class="invisible">
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/Dashboard-layout-v11.js"></script>
+<script src="assets/js/Table-With-Search.js"></script>
+<script th:inline="javascript" src="assets/javascript/scripts.js"></script>
+</body>

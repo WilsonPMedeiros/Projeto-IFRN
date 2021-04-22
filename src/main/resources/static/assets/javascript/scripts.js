@@ -23,6 +23,10 @@
            $("#nomeInputFuncionario").val(idFuncionario);
       });
 
+ $(document).on("click", ".funcaoFuncionario", function(){
+          var idFuncao= $(this).find("#fId").text();
+           $("#funcao").val(idFuncao);
+      });
 
 
 

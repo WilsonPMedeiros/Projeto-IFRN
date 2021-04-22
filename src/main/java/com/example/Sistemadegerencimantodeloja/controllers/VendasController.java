@@ -27,7 +27,7 @@ import java.util.List;
 @Controller
 public class VendasController {
     List<VendaAux> v = null;
-
+    List<Produtos> pList = null;
     @Autowired
      VendasServiceImpl vendasService;
 
@@ -49,61 +49,46 @@ public class VendasController {
         return mv;
     }
 
-    @GetMapping(value = "/cadastrarVendas")
-    public ModelAndView cadastrarVendas(Cliente cliente, Funcionario funcionario){
-        ModelAndView mv = new ModelAndView("/vendas.html");
+    @GetMapping(value = "/cadastrarVendas{id}")
+    public ModelAndView cadastrarVendas(Cliente cliente, Funcionario funcionario,@PathVariable("id") long id,
+                                        @ModelAttribute("vendas") Vendas vendas){
         List<Cliente> clientes=  clienteService.findAll();
         List<Funcionario> funcionarios= funcionarioService.findAll();
-        List<Produtos> produtos= produtosService.findAll();
+        List<Produtos>produtos = produtosService.findAll();
+        ModelAndView mv = new ModelAndView("/vendas.html");
+        if(!(id==0)){ Vendas vendaAtual=vendasService.findById(id); }
         mv.addObject("clientes", clientes);
         mv.addObject("funcionarios", funcionarios);
         mv.addObject("produtos", produtos);
+        mv.addObject("vendas", vendas);
         return mv;
     }
-    @PostMapping(value = "/cadastrarVendas/{id}")
-    public ModelAndView adicionarCompra(@PathVariable("id") long id,
-                                        @ModelAttribute("produtos") Produtos produto){
-        Produtos p = produtosService.findById(id);
+
+
+    @PostMapping(value = "/cadastrarVendas{id}")
+    public String adicionarCompra(@RequestParam("nomeInputProduto")long id,
+                                  @RequestParam("nomeInputFuncionario")long idFunc,
+                                  @RequestParam("nomeInputCliente")long idCli){
+        Produtos p =  produtosService.findById(id);
+        System.out.println("Esse é o produto"+ p);
         ModelAndView mv = new ModelAndView("/vendas.html");
-        List<Cliente> clientes=  clienteService.findAll();
-        List<Funcionario> funcionarios= funcionarioService.findAll();
-        Produtos prod= produtosService.findById(id);
-        Vendas venda=vendasService.add(p);
-        ///List<Vendas> v= vendasService.findAll();
-        mv.addObject("clientes", clientes);
-        mv.addObject("funcionarios", funcionarios);
+        Vendas venda = new Vendas();
+        System.out.println("essa é a venda"+ venda);
+        venda.setProdutos((List<Produtos>) produtosService.findById(id));
+        System.out.println("essa é a venda"+ venda);
+        venda.setPreco_venda(23);
+        venda.setFuncionario(funcionarioService.findById(idFunc));
+        System.out.println("Essa é a porra da venda:" + venda);
+        venda.setData_Venda(new Date());
+        venda.setDesconto(211);
+        venda.setPreco_total(213);
+        System.out.println("Essa é a porra da venda:" + venda);
+        venda.setCliente(clienteService.findById(idCli));
+        System.out.println("Essa é a porra da venda:" + venda);
 
-        mv.addObject("vendas", venda);
-        mv.addObject("produto", prod);
-
-       return mv;
-    }
-
-    @RequestMapping(value = "/cadastrarVendas{idProduto}{quantidade}", method = RequestMethod.POST)
-    public ModelAndView menorValor(@RequestParam("nomeInputProduto") long id,
-                                   @RequestParam("quant") int quant) {
-        ModelAndView mv = new ModelAndView("/vendas.html");
-        System.out.println("Esse é a porra do ID:"+ id);
-
-        Produtos produto= produtosService.findById(id);
-
-        double valor=vendasService.somarValor(produto.getValorVenda(), quant);
-        VendaAux vendas= new VendaAux();
-        System.out.println("valor inicial da variavel valor: "+ valor+ "Valor inicial da variavel quant: "+ quant);
-        System.out.println("aqui não tá dando erro:"+ valor);
-        vendas.setProduto(produto);
-        System.out.println("resultado das vendas "+ vendas);
-        vendas.setQuantidade(quant);
-        vendas.setValor(valor);
-
-        System.out.println("Valor final contido na variavel valor: "+valor +"Valor fina da variavel quant:"+quant);
-
-
-        v.add(vendas);
-        System.out.println("Resultado da vendas "+ v);
-        mv.addObject("vendas", v);
-
-        return mv;
+        vendasService.save(venda);
+        Vendas vId = vendasService.findById(venda.getId());
+       return "redirect:/cadastrarVendas"+ vId;
     }
 
     @RequestMapping(value = "/relatorioVendas", method = RequestMethod.POST)
@@ -126,9 +111,9 @@ public class VendasController {
         exporter.export(response);
         return mv;
     }
+    */
 
-    // Testando
-    @GetMapping("/opcoesVendas")
+    /*@GetMapping("/opcoesVendas")
     public String getVendas(HttpSession session, Model model){
     if(session.getAttribute("produtos") == null){
         model.addAttribute("allvendas", new ArrayList<Produtos>());
@@ -138,5 +123,29 @@ public class VendasController {
     }
         return "/opcaovendas.html";
     }*/
+
+
+    /*  @RequestMapping(value = "/cadastrarVendas{idProduto}{quantidade}", method = RequestMethod.POST)
+    public ModelAndView menorValor(@RequestParam("nomeInputProduto") long id,
+                                   @RequestParam("quant") int quant) {
+        ModelAndView mv = new ModelAndView("/vendas.html");
+        System.out.println("Esse é a porra do ID:"+ id);
+
+        Produtos produto= produtosService.findById(id);
+        Vendas venda= new Vendas();
+        venda.setData_Venda(new Date());
+        venda.setPreco_venda(produto.getValorVenda()*quant);
+        vendasService.save(venda);
+
+        List<Vendas> vendas= vendasService.findAll();
+        //double valor=vendasService.somarValor(produto.getValorVenda(), quant);
+       // VendaAux vendas= new VendaAux();
+
+        System.out.println("Resultado da vendas "+ v);
+        mv.addObject("vendas", vendas);
+
+        return mv;
+    }*/
+
 
 }

@@ -28,6 +28,6 @@ public class Estoque {
     private Produtos produto;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-            @JoinColumn(name = "id_produto")
+    @JoinColumn(name = "id_produto")
     List<Produtos> menorValor;
 }

@@ -7,15 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
-@Table(name="tb_produtos")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Produtos {
+public class itens implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -32,8 +31,5 @@ public class Produtos {
 
     @Column(name = "grupo", nullable = false)
     private String grupo;
-
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    private Vendas vendas;*/
 
 }

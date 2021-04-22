@@ -13,8 +13,6 @@ import javax.transaction.Transactional;
 import java.time.ZoneId;
 import java.util.*;
 
-
-
 @Service
 public class VendasServiceImpl implements VendasService{
 

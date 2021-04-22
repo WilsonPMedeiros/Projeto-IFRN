@@ -20,22 +20,22 @@ public class Funcionario {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome")
     private String nome;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(name = "cpf")
     private String cpf;
 
-    @Column(name = "telefone", nullable = false)
+    @Column(name = "telefone")
     private String telefone;
 
-    @Column(name = "login", nullable = false)
+    @Column(name = "login")
     private String login;
 
-    @Column(name = "sexo", nullable = false)
+    @Column(name = "sexo")
     private String sexo;
 
-    @Column(name = "senha", nullable = false)
+    @Column(name = "senha")
     private String senha;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

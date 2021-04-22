@@ -16,22 +16,22 @@ import javax.persistence.*;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome")
     private String nome;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(name = "cpf")
     private String cpf;
 
-    @Column(name = "telefone", nullable = false)
+    @Column(name = "telefone")
     private String telefone;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "sexo", nullable = false)
+    @Column(name = "sexo")
     private String sexo;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

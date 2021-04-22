@@ -6,9 +6,6 @@ import com.example.Sistemadegerencimantodeloja.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,6 +42,15 @@ public class DummyData {
 
     @Autowired
     FuncionarioRepository repositoryFuncionario;
+
+    @Autowired
+    venderRepository venderRepository;
+
+    @Autowired
+    ItensRepository itensRepository;
+
+    @Autowired
+    ItensVendidosRepository itensVendidosRepository;
 
     //@PostConstruct
     public void salvarCliente(){
@@ -284,7 +290,7 @@ public class DummyData {
                 .nome("Roberta")
                 .sexo("F")
                 .cpf("111111111")
-                .login("Roberta@gmail.com")
+                .login("admin@gmail.com")
                 .senha("1234")
                 .telefone("7777-7777")
                 .endereco(Endereco.builder()
@@ -350,7 +356,7 @@ public class DummyData {
     }
 
     //@PostConstruct
-    public void salvarVendas(){
+    /*public void salvarVendas(){
 
         List<Produtos> prods = new LinkedList<>();
 
@@ -427,6 +433,80 @@ public class DummyData {
             Vendas vendaSalva = repositoryvend.save(venda);
             System.out.println("[SAIDA] ID: " + vendaSalva.getId().toString());
         }
+    }*/
+
+    //@PostConstruct
+    public void salvarVender(){
+
+        itens p = itens.builder()
+                .descricao("Blusa estampada")
+                .valorCusto(10)
+                .valorVenda(20)
+                .grupo("Blusa")
+                .build();
+
+        itens pp = itens.builder()
+                .descricao("Blusa lisa")
+                .valorCusto(20)
+                .valorVenda(40)
+                .grupo("Blusa")
+                .build();
+        itensRepository.save(p);
+        itensRepository.save(pp);
+
+        Vender v2 = Vender.builder()
+                .data_Venda(new Date())
+                .desconto(20)
+                .cliente(Cliente.builder()
+                        .nome("Maria")
+                        .cpf("700.000.000-00")
+                        .sexo("F")
+                        .telefone("3333-3333")
+                        .email("maria_tads@ifrn.com")
+                        .end(Endereco.builder()
+                                .logradouro("Carlos Alexandre")
+                                .num(10)
+                                .bairro("Frei Damião")
+                                .cidade("Nova Cruz")
+                                .uf("RN")
+                                .cep("59215000")
+                                .build())
+                        .build())
+                .funcionario(Funcionario.builder()
+                        .nome("Roberta")
+                        .sexo("F")
+                        .cpf("111111111")
+                        .login("Roberta@gmail.com")
+                        .senha("1234")
+                        .telefone("7777-7777")
+                        .endereco(Endereco.builder()
+                                .logradouro("Carlos Alexandre")
+                                .num(10)
+                                .bairro("Frei Damião")
+                                .cidade("Nova Cruz")
+                                .uf("RN")
+                                .cep("59215000")
+                                .build())
+                        .build())
+                .build();
+
+        venderRepository.save(v2);
+
+        ItensVendidos i = ItensVendidos.builder()
+                .build();
+
+        ItensVendidos ii = ItensVendidos.builder()
+                .build();
+
+        itensVendidosRepository.save(i);
+        itensVendidosRepository.save(ii);
+        i.setItens(p);
+        i.setVendas(v2);
+        itensVendidosRepository.save(i);
+
+
+
+
     }
 
 

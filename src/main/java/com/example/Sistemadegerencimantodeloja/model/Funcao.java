@@ -1,7 +1,9 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,16 +11,18 @@ import javax.persistence.*;
 @Table(name="tb_funcao")
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Funcao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "salario", nullable = false)
+    @Column(name = "salario")
     private double salario;
 
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome")
     private String nome;
 
     /*

@@ -1,5 +1,6 @@
 package com.example.Sistemadegerencimantodeloja.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +13,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name="tb_vendas")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vendas {
+public class Vender {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,24 +45,12 @@ public class Vendas {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_produto")
-    private List<Produtos> produtos;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
 
-    public Vendas(Funcionario f, Cliente c) {
-        this.funcionario = f;
-        this.cliente = c;
-        this.produtos = new LinkedList<Produtos>();
 
-    }
 
-    public void addProduto(Produtos p) {
-        this.produtos.add(p);
-        this.preco_total = this.preco_total + p.getValorVenda();
-    }
 
 }

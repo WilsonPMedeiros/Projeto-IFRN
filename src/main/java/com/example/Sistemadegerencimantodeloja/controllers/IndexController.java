@@ -43,8 +43,14 @@ public class IndexController {
     public  String efetuarLogin(Funcionario funcionario, HttpSession session, RedirectAttributes ra){
         funcionario = funcionarioRepository.findByLoginAndSenha(funcionario.getLogin(), funcionario.getSenha());
         if(funcionario != null){
-            session.setAttribute("usuariologado", funcionario);
-            return "redirect:/telaprincipal";
+            if(funcionario.getFuncao().getNome().equals("admin")){
+                session.setAttribute("usuariologado", funcionario);
+                return "redirect:/telaprincipal";
+            }else{
+                return "redirect:/";
+            }
+
+
         }else {
             ra.addFlashAttribute("mensagem", "login/senha invalidos");
             return "redirect:/";
