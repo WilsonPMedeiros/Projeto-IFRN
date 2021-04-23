@@ -31,8 +31,9 @@ public class FuncaoServiceImpl implements FuncaoService {
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
+
     @Override
     public Funcao save(Funcao funcao) {
-        return null;
+        return repository.save(funcao);
     }
 }

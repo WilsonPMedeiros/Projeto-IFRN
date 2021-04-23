@@ -139,7 +139,7 @@ public class VenderController {
                                    @RequestParam("dataFinal")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dataF,
                                    HttpServletResponse response) throws DocumentException, IOException {
         ModelAndView mv = new ModelAndView("/relatorioVendas");
-        List<Vendas> vendas= (List<Vendas>) vendasService.buscarNoIntervalo(dataI, dataF);
+        List<Vender> vendas= (List<Vender>) venderService.buscarNoIntervalo(dataI, dataF);
         System.out.println("Resultado da query " +vendas);
         mv.addObject("produtos", vendas);
 

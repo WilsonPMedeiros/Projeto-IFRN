@@ -33,7 +33,9 @@
                         <p class="profile-name-card" > </p>
                         <div th:text = "${mensagem}" th:if ="mensagem != null"></div>
                         <form class="form-signin" method="post" action="/efetuarLogin" th:object=" ${funcionario}" >
-                            <span class="reauth-email"> </span><input class="form-control" type="text" id="inputEmail" name="login" required="" placeholder="Email address" autofocus=""><input class="form-control" type="text" name="senha" id="inputPassword" required="" placeholder="Password">
+                            <span class="reauth-email"> </span>
+                            <input class="form-control" type="email" id="inputEmail" name="login" required="" placeholder="Email address" autofocus="">
+                            <input class="form-control" type="password" name="senha" id="inputPassword" required="" placeholder="Password">
 
                     <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button></form></div>
             </div>

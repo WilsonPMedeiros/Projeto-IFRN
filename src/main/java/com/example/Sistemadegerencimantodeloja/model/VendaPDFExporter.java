@@ -13,9 +13,9 @@ import java.util.List;
 
 
 public class VendaPDFExporter {
-        private List<Vendas> listVendas;
+        private List<Vender> listVendas;
 
-        public VendaPDFExporter(List<Vendas> listVendas) {
+        public VendaPDFExporter(List<Vender> listVendas) {
             this.listVendas = listVendas;
         }
 
@@ -41,7 +41,7 @@ public class VendaPDFExporter {
         }
 
         private void writeTableData(PdfPTable table) {
-            for (Vendas vendas : listVendas) {
+            for (Vender vendas : listVendas) {
                 table.addCell(String.valueOf(vendas.getId()));
                 table.addCell(String.valueOf(vendas.getData_Venda()));
                 table.addCell(String.valueOf(vendas.getPreco_total()));
