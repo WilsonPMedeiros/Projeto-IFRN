@@ -1,0 +1,76 @@
+# Imagem docker do jdk8 que será usada para executar o build em um container
+image: adoptopenjdk/openjdk8
+stages: # Etapas do pipeline
+  - build
+  - test
+  - deploy
+  - e2e # stage para executar os testes de sistema
+
+# Usar cache para otimizar pipeline
+build: # Job 1
+  stage: build
+  script:
+    - ./gradlew assemble # Comando gradle que realiza o build do projeto
+  artifacts:
+    paths:
+      - build/libs/*.jar # Pasta no repositório onde será salvo o build
+  only:
+    changes:
+      - "*.gradle"
+      - gradle.properties
+  cache:
+    key: gradle-cache-key
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+    policy: push
+
+#cache:
+#  key: gradle-cache-key
+#  paths:
+#    - .gradle/wrapper
+#    - .gradle/caches
+#  policy: pull
+
+test: # Job 2:
+  stage: test
+  script:
+    # Executa os testes unitários e de integração
+    - ./gradlew unitIntegration -x test # Executa apenas os testes unitários e de integração
+#  only:
+#    - master
+
+deploy_prod: # Job 3
+  stage: deploy
+  image: ruby:latest
+  script:
+    - gem install dpl # Ferramenta de implantação desenvolvida pelo Travis CI
+    # Para implantar, a dpl precisa saber quem será:
+    #   provider: onde será implantada a aplicação
+    #   app: nome da aplicação no provider
+    #   api-key: no caso do Heroku, a chave de acesso para a conta
+    - dpl --provider=heroku --app=smartestoque --api_key=$HEROKU_API_KEY
+  only:
+    - master
+
+deploy_homolog: # Job 4
+  stage: deploy
+  image: ruby:latest
+  before_script:
+    # Instala o heroku CLI
+    - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=smartestoque-homolog --api_key=$HEROKU_API_KEY
+    # Usa o heroku cli para mudar o profile para dev (application-dev.properties) para o app de homologação
+    - heroku config:set SPRING_PROFILE_ACTIVE=dev --app=smartestoque-homolog
+  only:
+    - develop
+
+e2e-test: # Job 2:
+  stage: e2e
+  image: persapiens/chrome-openjdk:8
+  script:
+    - ./gradlew test --tests "br.com.eduardohenrique.smartestoque.functionalTests.Runner" # Executa os testes automatizados de sistema
+  only:
+    - develop
