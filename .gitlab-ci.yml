@@ -71,6 +71,6 @@ e2e-test: # Job 2:
   stage: e2e
   image: persapiens/chrome-openjdk:8
   script:
-    - ./gradlew test --tests "br.com.eduardohenrique.smartestoque.functionalTests.Runner" # Executa os testes automatizados de sistema
+    - ./gradlew ./gradlew cucumber
   only:
     - develop
