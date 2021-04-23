@@ -49,7 +49,7 @@ deploy_prod: # Job 3
     #   provider: onde será implantada a aplicação
     #   app: nome da aplicação no provider
     #   api-key: no caso do Heroku, a chave de acesso para a conta
-    - dpl --provider=heroku --app=smartestoque --api_key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=gerenciador-lojas --api_key=$HEROKU_API_KEY
   only:
     - master
 
@@ -61,7 +61,7 @@ deploy_homolog: # Job 4
     - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
   script:
     - gem install dpl
-    - dpl --provider=heroku --app=smartestoque-homolog --api_key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=gerenciador-lojas-homolog --api_key=$HEROKU_API_KEY
     # Usa o heroku cli para mudar o profile para dev (application-dev.properties) para o app de homologação
     - heroku config:set SPRING_PROFILE_ACTIVE=dev --app=smartestoque-homolog
   only:
