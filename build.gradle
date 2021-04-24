@@ -44,8 +44,22 @@ dependencies {
 	testImplementation 'io.cucumber:cucumber-junit:6.10.2'
 	implementation 'org.seleniumhq.selenium:selenium-java:2.41.0'
 
+	configurations {
+		cucumberRuntime {
+			extendsFrom testImplementation
+		}
+	}
 
-
+	task cucumber() {
+		dependsOn assemble, testClasses
+		doLast {
+			javaexec {
+				main = "io.cucumber.core.cli.Main"
+				classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+				args = ['src/test/resources/features']
+			}
+		}
+	}
 
 
 
