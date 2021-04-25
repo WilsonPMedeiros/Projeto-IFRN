@@ -16,7 +16,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 //        Runner.class},
 //        webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = SistemaDeGerencimantoDeLojaApplication.class,
+@ContextConfiguration(classes = SistemaDeGerencimantoDeLojaApplicationTests.class,
         loader = AnnotationConfigContextLoader.class
 )
 
