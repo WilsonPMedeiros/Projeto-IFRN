@@ -3,6 +3,7 @@ package com.example.Sistemadegerencimantodeloja.Service;
 import com.example.Sistemadegerencimantodeloja.model.Despesas;
 import com.example.Sistemadegerencimantodeloja.model.Estoque;
 import com.example.Sistemadegerencimantodeloja.model.Produtos;
+import com.example.Sistemadegerencimantodeloja.model.itens;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ public interface EstoqueService {
     Estoque findById(Long id);
     Estoque save(Estoque estoque);
     void deleteById(Long id);
-    Iterable<Produtos>  buscarProdutosComMenorValor(Double valor);
+    Iterable<itens>  buscarProdutosComMenorValor(Double valor);
 
 
-    Iterable<Produtos> buscarProdutosComMenorValor(double v);
+    Iterable<itens> buscarProdutosComMenorValor(double v);
 }

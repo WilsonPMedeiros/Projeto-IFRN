@@ -23,8 +23,8 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="" style="background-image:url(&quot;https://vignette.wikia.nocookie.net/the-xmen-roleplay/images/c/c1/Forest-Lake-HD-Desktop-Wallpaper.jpg/revision/latest?cb=20130822192442&quot;);">
-            <div class="sidebar-wrapper">
+        <div class="sidebar" data-color="purple">
+            <div class="sidebar-wrapper" style="background-color: #C4C4C4">
                 <div class="logo"><a class="simple-text" href="#">Admin dashboard</a></div>
                 <ul class="list-group">
                     <li class="list-group-item"><span>Funcionarios</span></li>
@@ -39,7 +39,7 @@
         <div class="main-panel">
             <nav class="navbar navbar-light navbar-expand-md">
                 <div class="container-fluid">
-                    <div><a class="navbar-brand" href="#"><strong><em>SigLojas</em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+                    <div><a class="navbar-brand" href="#"><strong><em><img src="assets/img/logo2.png" width=100 height=50></em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
                     <div
                         class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav"></ul>
@@ -49,10 +49,14 @@
                 </div>
         </div>
         </nav>
-        <div class="d-inline-block">
 
+            <div class="col-md-12 search-table-col">
+                <div
+                        class="table-responsive table-bordered table table-hover table-bordered results">
+
+                <div class="d-inline-block">
             <form method="post">
-                <a class="navbar-brand" href="/cadastrarProduto">Adicionar +</a>
+                <a class="navbar-brand" href="/cadastrarProduto"><FONT COLOR="#4F4F4F">Adicionar +</FONT></a>
                 <!---<tr th:each="produto : ${produtos}">
                     <td th:text="${produto.valorVenda}"></td>
                 </tr>--->
@@ -63,7 +67,7 @@
         </div>
             <table class="table table-bordered table-hover table-bordered results">
                     <thead class="bill-header cs">
-                        <tr>
+                        <tr style="background-color: #C4C4C4">
                             <th id="trs-hd" class="col-lg-1">Produto</th>
                             <th id="trs-hd" class="col-lg-2">descrição</th>
                             <th id="trs-hd" class="col-lg-3"></th>
@@ -79,8 +83,7 @@
                             <td th:text="${produto.valorVenda}"></td>
                             <td th:text="${produto.valorCusto}"></td>
                             <td>
-                            <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a th:href="${'/editar/cliente'}">Editar</a></button>
-                            <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a>Excluir</a></button></td>
+                            <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/removerProduto/'+produto.id}"><FONT COLOR="#FFFFFF">Excluir</FONT></a></button></td>
                         </tr>
                     </tbody>
                 </table>

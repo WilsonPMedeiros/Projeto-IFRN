@@ -49,7 +49,7 @@
                 </div>
         </div>
         </nav>
-        <div class="col-md-12 search-table-col" style="filter: blur(0px);"><a class="navbar-brand" href="/adicionarSaida"><br>Adicionar +</a>
+        <div class="col-md-12 search-table-col" style="filter: blur(0px);"><a class="navbar-brand" href="/cadastrarFechamentoC"><br>Adicionar +</a>
             <div
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
@@ -58,19 +58,18 @@
                             <th id="trs-hd" class="col-lg-1">Código</th>
                             <th id="trs-hd" class="col-lg-2">Data</th>
                             <th id="trs-hd" class="col-lg-3">Entrada</th>
-                            <th>Saída</th>
-                            <th>Saldo</th>
+                            <th id="trs-hd" class="col-lg-3">Saida</th>
+                            <th id="trs-hd" class="col-lg-3">Saldo</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr th:each="saida:${saidas}">
-                            <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
                             <td th:text="${saida.id}"></td>
                             <td th:text="${saida.data}"></td>
                             <td th:text="${saida.entrada}"></td>
                             <td th:text="${saida.saida}"></td>
-                            <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
+                            <td th:text="${saida.saldo}"></td>
                         </tr>
                     </tbody>
                 </table>

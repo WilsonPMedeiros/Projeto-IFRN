@@ -135,8 +135,8 @@ public class VenderController {
     }
 
     @RequestMapping(value = "/relatorioVendas", method = RequestMethod.POST)
-    public ModelAndView menorValor(@RequestParam("dataInicial" )@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date  dataI,
-                                   @RequestParam("dataFinal")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dataF,
+    public ModelAndView menorValor(@RequestParam("dataInicial" )Date  dataI,
+                                   @RequestParam("dataFinal") Date dataF,
                                    HttpServletResponse response) throws DocumentException, IOException {
         ModelAndView mv = new ModelAndView("/relatorioVendas");
         List<Vender> vendas= (List<Vender>) venderService.buscarNoIntervalo(dataI, dataF);
@@ -184,6 +184,18 @@ public class VenderController {
 
         return "redirect:/cadastrarVendas";
     }
+    //Exclusão de vendas
+    @GetMapping(value = "/opcoes/excluirVenda/{id}")
+    public String deletarFuncionario(@PathVariable("id") long id){
+        Vender vaux= venderService.findById(id);
+        List<ItensVendidos> it = itensVendidosRepository.findByVendas(vaux);
+         for (int i=0;i<it.size();i++){
+             System.out.println(it.get(i));
+            itensVendidosService.deleteById(it.get(i).getId());
 
+         }
+        venderService.deleteById(id);
+        return "redirect:/opcoesVendas";
+    }
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -49,16 +49,17 @@
                 </div>
         </div>
         </nav>
-        <div class="col-md-12 search-table-col"><span class="counter pull-right"></span><a class="navbar-brand" href="#" style="color: rgb(132,142,140);"><br></a><a class="navbar-brand" href="#"><br></a><span style="background-color: #6891a2;color: rgb(255,255,255);"><strong>Adicionar +</strong></span>
-            <div
+            <div class="col-md-12 search-table-col"><a class="navbar-brand" href="/cadastrarInvestimento"><FONT COLOR="#4F4F4F">Adicionar +</FONT> </a>
+                <div
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
                         <tr>
-                            <th id="trs-hd" class="col-lg-1">Descrição</th>
-                            <th id="trs-hd" class="col-lg-2">código</th>
-                            <th id="trs-hd" class="col-lg-3">Valor</th>
-                            <th>Data</th>
+                            <th id="trs-hd" class="col-lg-1">ID</th>
+                            <th id="trs-hd" class="col-lg-3">Descrição</th>
+                            <th id="trs-hd" class="col-lg-3">Data</th>
+                            <th id="trs-hd" class="col-lg-1">Valor</th>
+                            <th id="trs-hd" class="col-lg-3"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,12 +67,16 @@
                             <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
                             <td>Cell 2</td>
                         </tr>
-                        <tr>
-                            <td>Espelho com luzes de led</td>
-                            <td>0000000000</td>
-                            <td>R$100,00</td>
-                            <td>12/03/2021</td>
-                            <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
+                        <tr th:each="despesa : ${investimentos}">
+                            <td th:text="${despesa.id}" ><input th:value="${despesa.id}" name="id_cliente" id="id_cliente" class="invisible"></td>
+                            <td th:text="${despesa.descricao}"></td>
+                            <td th:text="${despesa.data}"></td>
+                            <td th:text="${despesa.valor}"></td>
+
+                            <td>
+                                <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i>
+                                    <a th:href="${'/editarInvestimento'+despesa.id}" id="">Editar</a></button>
+                                <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/opcoes/excluirInvestimento/'+despesa.id}" >Excluir</a></button></td>
                         </tr>
                     </tbody>
                 </table>

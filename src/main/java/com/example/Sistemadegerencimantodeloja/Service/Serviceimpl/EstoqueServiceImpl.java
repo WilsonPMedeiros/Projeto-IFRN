@@ -4,11 +4,13 @@ import com.example.Sistemadegerencimantodeloja.Service.EstoqueService;
 import com.example.Sistemadegerencimantodeloja.model.*;
 import com.example.Sistemadegerencimantodeloja.repository.ClienteRepository;
 import com.example.Sistemadegerencimantodeloja.repository.EstoqueRepository;
+import com.example.Sistemadegerencimantodeloja.repository.ItensRepository;
 import com.example.Sistemadegerencimantodeloja.repository.ProdutosRepository;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import com.example.Sistemadegerencimantodeloja.model.itens;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -23,6 +25,9 @@ public class EstoqueServiceImpl implements EstoqueService {
 
     @Autowired
     EntityManager manager;
+
+    @Autowired
+    ItensRepository itensRepository;
 
     @Autowired
     ProdutosRepository produtosRepository;
@@ -49,17 +54,17 @@ public class EstoqueServiceImpl implements EstoqueService {
     }
 
     @Override
-    public Iterable<Produtos> buscarProdutosComMenorValor(Double valor) {
+    public Iterable<itens> buscarProdutosComMenorValor(Double valor) {
         return null;
     }
 
     @Override
-    public Iterable<Produtos> buscarProdutosComMenorValor(double v) {
-        QProdutos qProdutos = QProdutos.produtos;
+    public Iterable<itens> buscarProdutosComMenorValor(double v) {
+        Qitens qProdutos = Qitens.itens;
         // Verifica se a quantidade de unidades é menor ou igual ao volume mínimo
         BooleanExpression expression = qProdutos.valorVenda.loe(v);
         System.out.println(expression.toString());
-        return produtosRepository.findAll(expression);
+        return itensRepository.findAll(expression);
     }
 
 }

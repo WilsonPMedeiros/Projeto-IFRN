@@ -13,5 +13,6 @@ public interface InvestimentoService {
     List<Investimento> findAll();
     Investimento findById(Long id);
     Investimento save(Investimento investimento);
+    void deleteById(Long id);
     Iterable<Investimento>  buscarNoIntervalo(java.util.Date dataI, Date dataF);
 }

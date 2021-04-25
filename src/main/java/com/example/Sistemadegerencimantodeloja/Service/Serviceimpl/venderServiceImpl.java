@@ -24,6 +24,11 @@ public class venderServiceImpl implements  venderService{
     }
 
     @Override
+    public void deleteById(Long id) { venderRepository.deleteById(id);
+    }
+
+
+    @Override
     public Vender findById(Long id) {
         return venderRepository.findById(id).get();
     }

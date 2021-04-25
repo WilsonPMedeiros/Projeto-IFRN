@@ -13,4 +13,5 @@ public interface DespesasService {
     Despesas findById(Long id);
     Despesas save(Despesas despesas);
     Iterable<Despesas>  buscarNoIntervalo(Date dataI, Date dataF);
+    void deleteById(Long id);
 }

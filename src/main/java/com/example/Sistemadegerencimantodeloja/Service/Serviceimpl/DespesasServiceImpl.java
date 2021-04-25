@@ -25,13 +25,13 @@ public class DespesasServiceImpl implements DespesasService {
 
     @Override
     public Despesas findById(Long id) {
-        return null;
+        return repository.findById(id).get();
     }
 
 
     @Override
     public Despesas save(Despesas despesas) {
-        return null;
+        return repository.save(despesas);
     }
 
     @Override
@@ -41,4 +41,9 @@ public class DespesasServiceImpl implements DespesasService {
         System.out.println(expression.toString());
         return repository.findAll(expression);
     }
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
 }

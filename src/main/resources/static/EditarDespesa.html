@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -49,17 +49,14 @@
                 </div>
             </div>
         </nav>
-        <div class="content"><label><strong>Cadastrar Investimento</strong><br></label>
-            <form method="post">
+        <div class="content"><label><strong>Editar Investimento</strong><br></label>
+            <form method="post"  th:action="@{/editarDespesa{id}(id=${despesa.id})}" th:object="${despesa}">
                 <div class="form-row">
                     <div class="col-sm-4 col-xl-8">
-                        <div class="form-group"><label>Descrição</label><input class="form-control" type="text" name="descricao"></div>
+                        <div class="form-group"><label>Descrição</label><input th:value="${despesa.descricao}" class="form-control" type="text" name="descricao"></div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="form-group"><label>Valor</label><input class="form-control" type="number" name="valor"></div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group"><label>Data</label><input class="form-control" type="date" name="data"></div>
+                        <div class="form-group"><label>Valor</label><input th:value="${despesa.valor}" class="form-control" type="number" name="valor"></div>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-11 offset-lg-0" style="text-align:center;margin-top:145px;"><button class="btn btn-danger" style="border:none;width:151px;height:58px;background-color:#e86767;" type="button">Cancelar</button>

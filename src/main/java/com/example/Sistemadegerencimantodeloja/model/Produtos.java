@@ -32,7 +32,6 @@ public class Produtos {
 
     @Column(name = "grupo", nullable = false)
     private String grupo;
-
     /*@ManyToOne(fetch = FetchType.LAZY)
     private Vendas vendas;*/
 

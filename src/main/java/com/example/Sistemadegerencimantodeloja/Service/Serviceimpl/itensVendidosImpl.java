@@ -19,7 +19,10 @@ public class itensVendidosImpl implements ItensIvendidosService {
     public List<ItensVendidos> findAll() {
         return itensVendidosRepository.findAll();
     }
-
+    @Override
+    public void deleteById(Long id) {
+        itensVendidosRepository.deleteById(id);
+    }
 
     @Override
     public ItensVendidos findById(Long id) {

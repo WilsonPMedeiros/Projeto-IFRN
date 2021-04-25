@@ -20,14 +20,18 @@ public class Estoque {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "quantidade", nullable = false)
+    @Column(name = "quantidade")
     private int quantidade;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "id_produto")
-    private Produtos produto;
+    private itens produto;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_produto")
-    List<Produtos> menorValor;
+    List<itens> menorValor;
+
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_item")
+    private itens item;
 }

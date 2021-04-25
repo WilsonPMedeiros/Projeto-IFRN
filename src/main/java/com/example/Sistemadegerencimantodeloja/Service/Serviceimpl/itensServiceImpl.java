@@ -34,6 +34,10 @@ public class itensServiceImpl implements itensService{
     public itens save(itens itens) {
         return itensRepository.save(itens);
     }
+    @Override
+    public void deleteById(Long id) { itensRepository.deleteById(id);
+    }
+
 
 
 }

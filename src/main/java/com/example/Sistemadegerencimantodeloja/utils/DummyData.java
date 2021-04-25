@@ -6,6 +6,7 @@ import com.example.Sistemadegerencimantodeloja.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -293,6 +294,9 @@ public class DummyData {
                 .login("admin@gmail.com")
                 .senha("1234")
                 .telefone("7777-7777")
+                .funcao(Funcao.builder()
+                        .nome("admin")
+                        .salario(1000).build())
                 .endereco(Endereco.builder()
                         .logradouro("Carlos Alexandre")
                         .num(10)

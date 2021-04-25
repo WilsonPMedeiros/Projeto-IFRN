@@ -10,5 +10,6 @@ public interface venderService {
     Vender findById(Long id);
     Vender save(Vender vendas);
     Iterable<Vender>  buscarNoIntervalo(Date dataI, Date dataF);
+    void deleteById(Long id);
 
 }

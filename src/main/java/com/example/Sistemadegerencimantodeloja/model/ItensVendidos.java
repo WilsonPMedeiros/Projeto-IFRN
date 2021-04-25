@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@Table(name="itens_vendidos")
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class ItensVendidos {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_venda")
+    @JoinColumn(name = "id_vendas")
     private Vender vendas;
 
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

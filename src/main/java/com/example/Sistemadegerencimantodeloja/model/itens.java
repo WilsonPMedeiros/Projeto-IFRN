@@ -14,10 +14,11 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class itens implements Serializable {
+@Table(name="itens")
+public class itens {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_itens", nullable = false)
     private Long id;
 
     @Column(name = "descricao", nullable = false)

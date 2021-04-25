@@ -9,5 +9,6 @@ public interface ItensIvendidosService {
     List<ItensVendidos> findAll();
     ItensVendidos findById(Long id);
     ItensVendidos save(ItensVendidos itensVendidos);
+    void deleteById(Long id);
 
 }

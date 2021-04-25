@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -23,8 +23,8 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="" style="background-image:url(&quot;https://vignette.wikia.nocookie.net/the-xmen-roleplay/images/c/c1/Forest-Lake-HD-Desktop-Wallpaper.jpg/revision/latest?cb=20130822192442&quot;);">
-            <div class="sidebar-wrapper">
+        <div class="sidebar" data-color="purple" >
+            <div class="sidebar-wrapper" style="background-color: #C4C4C4">
                 <div class="logo"><a class="simple-text" href="#">Admin dashboard</a></div>
                 <ul class="list-group">
                     <li class="list-group-item"><span>Funcionarios</span></li>
@@ -39,7 +39,7 @@
         <div class="main-panel">
             <nav class="navbar navbar-light navbar-expand-md">
                 <div class="container-fluid">
-                    <div><a class="navbar-brand" href="#"><strong><em>SigLojas</em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+                    <div><a class="navbar-brand" href="#"><strong><em><img src="assets/img/logo2.png" width=100 height=50></em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
                     <div
                         class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav"></ul>
@@ -49,26 +49,33 @@
                 </div>
         </div>
         </nav>
-        <div class="col-md-12 search-table-col"><span class="counter pull-right"></span><a class="navbar-brand" href="#" style="color: rgb(132,142,140);"><br></a><a class="navbar-brand" href="#"><br></a><span style="background-color: #6891a2;color: rgb(255,255,255);"><strong>Adicionar +</strong></span>
+            <div class="col-md-12 search-table-col"><a class="navbar-brand" href="/cadastrarDespesa"><FONT COLOR="#4F4F4F">Adicionar +</FONT> </a>
             <div
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
-                        <tr>
-                            <th id="trs-hd" class="col-lg-1">Descrição</th>
-                            <th id="trs-hd" class="col-lg-2">código</th>
-                            <th id="trs-hd" class="col-lg-3">Valor</th>
+                        <tr style="background-color: #C4C4C4">
+                            <th id="trs-hd" class="col-lg-1">ID</th>
+                            <th id="trs-hd" class="col-lg-3">Descrição</th>
+                            <th id="trs-hd" class="col-lg-3">Data</th>
+                            <th id="trs-hd" class="col-lg-1">Valor</th>
+                            <th id="trs-hd" class="col-lg-3"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="warning no-result">
                             <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
                         </tr>
-                        <tr>
-                            <td>Conta de energia</td>
-                            <td>0000000000</td>
-                            <td>R$100,00</td>
-                            <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;" type="submit"><i class="fa fa-trash" style="font-size: 15px;"></i></button></td>
+                        <tr th:each="despesa : ${despesas}">
+                        <td th:text="${despesa.id}" ><input th:value="${despesa.id}" name="id_cliente" id="id_cliente" class="invisible"></td>
+                        <td th:text="${despesa.descricao}"></td>
+                        <td th:text="${despesa.data}"></td>
+                        <td th:text="${despesa.valor}"></td>
+
+                            <td>
+                                <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i>
+                                    <a th:href="${'/editarDespesa'+despesa.id}" id="">Editar</a></button>
+                                <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a th:href="${'/opcoes/excluirDespesa/'+despesa.id}" >Excluir</a></button></td>
                         </tr>
                     </tbody>
                 </table>

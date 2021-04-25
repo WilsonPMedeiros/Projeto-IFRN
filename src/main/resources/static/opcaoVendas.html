@@ -55,9 +55,9 @@
                     <thead class="bill-header cs">
                         <tr style="background-color: #C4C4C4">
                             <th id="trs-hd" class="col-lg-1">id</th>
-                            <th id="trs-hd" class="col-lg-2">Data</th>
+                            <th id="trs-hd" class="col-lg-3">Data</th>
                             <th id="trs-hd" class="col-lg-2">valor da venda</th>
-                            <th></th>
+                            <th id="trs-hd" class="col-lg-2">Cliente</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,10 +65,7 @@
                         <td th:text="${cliente.id}" ><input th:value="${cliente.id}" name="id_cliente" id="id_cliente" class="invisible"></td>
                         <td th:text="${cliente.data_Venda}"></td>
                         <td th:text="${cliente.preco_total}"></td>
-                            <td>
-                                <button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i><a>Editar</a></button>
-                                <button class="btn btn-danger" style="margin-left: 5px;" type="submit" ><i class="fa fa-trash" style="font-size: 15px;"></i><a>Excluir</a></button>
-                            </td>
+                        <td th:text="${cliente.cliente.nome}"></td>
                         </tr>
                     </tbody>
                 </table>

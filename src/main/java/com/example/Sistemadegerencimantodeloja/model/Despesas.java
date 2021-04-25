@@ -24,7 +24,6 @@ public class Despesas {
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data", nullable = false)
     private Date data;
 

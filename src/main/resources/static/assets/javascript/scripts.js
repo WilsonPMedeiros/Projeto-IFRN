@@ -34,4 +34,3 @@
           var idProduto = $(this).find("#pId").text();
            $("#nomeInputProduto").val(idProduto);
       });
-

@@ -13,16 +13,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+@Table(name="vender")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Vender {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_vendas", nullable = false)
     private Long id;
 
     @Column(name = "desconto")
@@ -34,7 +34,6 @@ public class Vender {
     @Column(name = "preco_total")
     private double preco_total;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_Venda")
     private Date data_Venda;
 /*

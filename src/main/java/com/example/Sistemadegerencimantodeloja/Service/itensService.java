@@ -9,5 +9,6 @@ public interface itensService {
     List<itens> findAll();
     itens findById(Long id);
     itens save(itens itens);
+    void deleteById(Long id);
 
 }
