@@ -2,6 +2,7 @@ package com.example.Sistemadegerencimantodeloja.testesFuncionais;
 
 
 import com.example.Sistemadegerencimantodeloja.SistemaDeGerencimantoDeLojaApplication;
+import com.example.Sistemadegerencimantodeloja.SistemaDeGerencimantoDeLojaApplicationTests;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

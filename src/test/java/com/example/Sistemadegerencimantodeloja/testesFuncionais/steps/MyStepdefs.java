@@ -24,7 +24,7 @@ public class MyStepdefs extends CucumberSpringConfiguration {
     @Before
     @Profile("dev")
     public void iniciar(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver/chromedriver");
+       System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver/chromedriver.exe");
         ChromeOptions options = new ChromeOptions().setHeadless(true);
         options.addArguments("--no-sandbox");
         options.addArguments("--proxy-server='direct://'");

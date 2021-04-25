@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.TimeZone;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.example.Sistemadegerencimantodeloja")
 public class SistemaDeGerencimantoDeLojaApplication {
 
 	public static void main(String[] args) {
