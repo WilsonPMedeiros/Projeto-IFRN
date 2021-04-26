@@ -22,7 +22,7 @@ jobs:
     - name: Set postgres
       uses: harmon758/postgresql-action@v1
       with:
-        postgresql db: sigloja
+        postgresql db: postgres
         postgresql password: 1234
 
     - name: Grant execute permission for gradlew
@@ -46,7 +46,7 @@ jobs:
     - name: Set postgres
       uses: harmon758/postgresql-action@v1
       with:
-        postgresql db: sigloja
+        postgresql db: postgres
         postgresql password: 1234
 
     - name: Grant execute permission for gradlew
