@@ -37,8 +37,8 @@ test: # Job 2:
   script:
     # Executa os testes unitários e de integração
     - ./gradlew unitIntegration -x test # Executa apenas os testes unitários e de integração
-#  only:
-#    - master
+  only:
+    - master
 
 deploy_prod: # Job 3
   stage: deploy
@@ -71,6 +71,6 @@ e2e-test: # Job 2:
   stage: e2e
   image: persapiens/chrome-openjdk:8
   script:
-    - ./gradlew ./gradlew cucumber
+    - ./gradlew cucumber
   only:
     - develop

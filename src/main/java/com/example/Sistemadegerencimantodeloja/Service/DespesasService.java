@@ -3,10 +3,12 @@ package com.example.Sistemadegerencimantodeloja.Service;
 import com.example.Sistemadegerencimantodeloja.model.Caixa;
 import com.example.Sistemadegerencimantodeloja.model.Cliente;
 import com.example.Sistemadegerencimantodeloja.model.Despesas;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+@Service
 public interface DespesasService {
 
     List<Despesas> findAll();
