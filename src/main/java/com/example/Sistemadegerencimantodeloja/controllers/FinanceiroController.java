@@ -9,6 +9,7 @@ import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.venderService
 import com.example.Sistemadegerencimantodeloja.Service.Serviceimpl.VendasServiceImpl;
 import com.example.Sistemadegerencimantodeloja.model.*;
 import com.example.Sistemadegerencimantodeloja.repository.InvestimentoRepository;
+import com.lowagie.text.DocumentException;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.dsl.NumberExpression;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -22,6 +23,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,7 +35,6 @@ import java.util.List;
 
 @Controller
 public class FinanceiroController {
-
 
     @Autowired
     CaixaServiceImpl caixaService;
@@ -155,10 +157,34 @@ public class FinanceiroController {
         caixa.setSaldo(saldo);
         System.out.println("Soma "+somaIn);
         caixaService.save(caixa);
-        return "redirect:/cadastrarFechamentoC";
+        return "redirect:/opcoesFechamentoCaixa";
     }
 
+    @RequestMapping(value = "/relatorioFinanceiro", method = RequestMethod.POST)
+    public ModelAndView gerarPdfCaixa(@RequestParam("dtInicial" )@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dataI,
+                                      @RequestParam("dtFinal")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dataF,
+                                      HttpServletResponse response) throws DocumentException, IOException {
+        ModelAndView mv = new ModelAndView("/relatorioFinanceiro");
+        //List<Caixa> caixa= (List<Caixa>) caixaService.buscarNoIntervalo(dataI, dataF);
+        List<Despesas> despesas= (List<Despesas>) despesasService.buscarNoIntervalo(dataI, dataF);
+        List<Investimento> investimentos= (List<Investimento>) investimentoService.buscarNoIntervalo(dataI, dataF);
+        List<Vender> venders= (List<Vender>) venderService.buscarNoIntervalo(dataI, dataF);
+        //System.out.println("Resultado da query " +caixa);
+        mv.addObject("despesa", despesas);
+        mv.addObject("investimento", investimentos);
+        mv.addObject("vendas", venders);
 
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=Financeiro_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        FinanceiroExporterPDF exporter = new FinanceiroExporterPDF(venders, despesas, investimentos);
+        exporter.export(response);
+        return mv;
+    }
 
 
 

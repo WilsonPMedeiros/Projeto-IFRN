@@ -13,8 +13,8 @@ public class BasePage {
 
     public CadastroFuncaoPage navegar(){
         driver.navigate()
-                .to("https://gerenciador-lojas-homolog.herokuapp.com/cadastrarFuncao");
-        assertThat("Cadastrar Funcao").isEqualTo(driver.getTitle());
+                .to("https://gerenciador-lojas.herokuapp.com/cadastrarFuncao");
+        assertThat(driver.getTitle()).isEqualTo("Cadastrar Funcao");
         return new CadastroFuncaoPage(driver);
     }
 }

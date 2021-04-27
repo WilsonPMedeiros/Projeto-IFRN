@@ -4,9 +4,11 @@ import com.example.Sistemadegerencimantodeloja.model.Despesas;
 import com.example.Sistemadegerencimantodeloja.model.Estoque;
 import com.example.Sistemadegerencimantodeloja.model.Produtos;
 import com.example.Sistemadegerencimantodeloja.model.itens;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface EstoqueService {
 
     List<Estoque> findAll();

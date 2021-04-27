@@ -6,7 +6,9 @@ import com.example.Sistemadegerencimantodeloja.model.Produtos;
 import com.example.Sistemadegerencimantodeloja.model.itens;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface EstoqueRepository extends JpaRepository<Estoque, Long>, QuerydslPredicateExecutor<Estoque> {
      Estoque findByItem(itens itens);
 }

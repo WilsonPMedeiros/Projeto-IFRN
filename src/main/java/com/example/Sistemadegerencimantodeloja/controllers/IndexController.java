@@ -37,6 +37,18 @@ public class IndexController {
         return mv;
     }
 
+    @RequestMapping(value = "/telavendedor", method = RequestMethod.GET)
+    public ModelAndView telaVendedor() {
+        ModelAndView mv = new ModelAndView("/telaVendedor.html");
+        return mv;
+    }
+
+    @RequestMapping(value = "/telaGestoque", method = RequestMethod.GET)
+    public ModelAndView telaGestorE() {
+        ModelAndView mv = new ModelAndView("/telaGestoque.html");
+        return mv;
+    }
+
 
 
     @PostMapping("/efetuarLogin")
@@ -46,8 +58,14 @@ public class IndexController {
             if(funcionario.getFuncao().getNome().equals("admin")){
                 session.setAttribute("usuariologado", funcionario);
                 return "redirect:/telaprincipal";
+            }else if (funcionario.getFuncao().getNome().equals("Vendedor")){
+            session.setAttribute("usuariologado", funcionario);
+                return "redirect:/telavendedor";
+             }else if (funcionario.getFuncao().getNome().equals("Gerenciador de Estoque")){
+                session.setAttribute("usuariologado", funcionario);
+                return "redirect:/telaGestoque";
             }else{
-                return "redirect:/";
+                return "redirect:/telaGestoque";
             }
 
 

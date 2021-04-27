@@ -23,28 +23,25 @@
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="" style="background-image:url(&quot;https://vignette.wikia.nocookie.net/the-xmen-roleplay/images/c/c1/Forest-Lake-HD-Desktop-Wallpaper.jpg/revision/latest?cb=20130822192442&quot;);">
-            <div class="sidebar-wrapper">
+        <div class="sidebar" data-color="purple">
+            <div class="sidebar-wrapper" style="background-color: #C4C4C4">
                 <div class="logo"><a class="simple-text" href="#">Admin dashboard</a></div>
                 <ul class="list-group">
-                    <li class="list-group-item"><span>Funcionarios</span></li>
-                    <li class="list-group-item"><span>Clientes</span></li>
-                    <li class="list-group-item"><span>Vendas</span></li>
-                    <li class="list-group-item"><span>Financeiro</span></li>
-                    <li class="list-group-item"><span>Estoque</span></li>
-                    <li class="list-group-item"><span>Relatórios</span></li>
+                    <li class="list-group-item"><a href="/opcoesFechamentoCaixa"><FONT COLOR="#ffffff"><span>Fechamento de caixa</span></FONT></a></li>
+                    <li class="list-group-item"><a href="/opcoesDespesas"><FONT COLOR="#ffffff"><span>Despesas</span></FONT></a></li>
+                    <li class="list-group-item"><a href="/opcoesInvestimento"><FONT COLOR="#ffffff"><span>Investimento</span></FONT></a></li>
                 </ul>
             </div>
         </div>
         <div class="main-panel">
             <nav class="navbar navbar-light navbar-expand-md">
                 <div class="container-fluid">
-                    <div><a class="navbar-brand" href="#"><strong><em>SigLojas</em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+                    <div><a class="navbar-brand" href="/telaprincipal"><strong><em><img src="assets/img/logo2.png" width=100 height=50></em></strong></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
                     <div
                         class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav"></ul>
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Sair</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="/logout">Sair</a></li>
                         </ul>
                 </div>
         </div>
@@ -54,7 +51,7 @@
                 class="table-responsive table-bordered table table-hover table-bordered results">
                 <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
-                        <tr>
+                        <tr style="background-color: #C4C4C4">
                             <th id="trs-hd" class="col-lg-1">ID</th>
                             <th id="trs-hd" class="col-lg-3">Descrição</th>
                             <th id="trs-hd" class="col-lg-3">Data</th>
